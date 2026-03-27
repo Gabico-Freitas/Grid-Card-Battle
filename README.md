@@ -4,6 +4,7 @@
 * Grid = 5x5 (8x8 ?)
 * Movimentos são ortogonais (sem DIAGONAL)
 * Mana não utilizada é descartada
+* Cartas não utilizadas são descartadas
 * Atributos jogador
   * Movimento = 3 quadrados, balancear por algumas cartas
   * Vida = 36
@@ -18,10 +19,17 @@
 ## Cartas
 * Deck inicial = ?
 * Tipos de carta:
-  * Ataque
-  * 
-* 
+  * Ataque (focar nisso primeiro):
+    * De perto
+    * À distância
+  * Status/Movimento (Se der tempo)
+  * Defesa (Se der tempo)
+* Cartas Base:
+  * Ataque 1 bloco
+  <img width="167" height="87" alt="image" src="https://github.com/user-attachments/assets/656b5226-01b2-4b53-98fd-3ea75455ca89" />
 
+  * 
+ 
 ## Inimigos
 * Peão
   * Ataque de perto = 1 bloco (5 de dano)
