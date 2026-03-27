@@ -24,10 +24,18 @@
     * À distância
   * Status/Movimento (Se der tempo)
   * Defesa (Se der tempo)
-* Cartas Base:
+
+* Cartas Base (azul é o ataque):
   * Ataque 1 bloco
   <img width="167" height="87" alt="image" src="https://github.com/user-attachments/assets/656b5226-01b2-4b53-98fd-3ea75455ca89" />
-
+  * Ataque 3 blocos
+  <img width="304" height="79" alt="image" src="https://github.com/user-attachments/assets/b4dca830-b753-4575-9f3f-e7805d345e24" />
+  * Ataque 3º bloco
+  <img width="304" height="78" alt="image" src="https://github.com/user-attachments/assets/b8fca0bc-d5b0-4be8-9584-21cc8c0c270d" />
+  * Ataque 3 blocos DA frente
+  <img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/c154d8c6-8770-48a6-a3ba-a1c04c3c7e82" />
+  * Ataque 1 bloco que consome movimento (O ataque reduz o movimento do jogador pelo turno)
+  <img width="167" height="87" alt="image" src="https://github.com/user-attachments/assets/656b5226-01b2-4b53-98fd-3ea75455ca89" />
   * 
  
 ## Inimigos
