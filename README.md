@@ -30,10 +30,10 @@
   * Caras = 4
 
 * Cartas Base (azul é o ataque):
-  * Ataque 1 bloco (Custo: 1, Dano: 3) (x4)
+  * Ataque 1 bloco (Custo: 1, Dano: 3) (x6)
   <img width="167" height="87" alt="image" src="https://github.com/user-attachments/assets/656b5226-01b2-4b53-98fd-3ea75455ca89" />
   
-  * Ataque 3 blocos (Custo: 2, Dano: 4) (x3)
+  * Ataque 3 blocos (Custo: 2, Dano: 4) (x1)
   <img width="304" height="79" alt="image" src="https://github.com/user-attachments/assets/b4dca830-b753-4575-9f3f-e7805d345e24" />
   
   * Ataque 3º bloco (Custo: 2, Dano: 7) (x2)
@@ -48,19 +48,19 @@
 ## Inimigos
 * Peão
   * Ataque de perto = 1 bloco (5 de dano)
-  * Vida = 25
+  * Vida = 20
   * Movimento = 2 quadrados
   * IA = Se move o mais próximo possível e ataca se possível
     
 * Sniper
   * Ataque de longe = 3 blocos (8 de dano)
-  * Vida = 15
+  * Vida = 15 (Rever)
   * Movimento = 1
   * IA = Testa se da pra atacar o jogador em algum quadrado adjacente, caso dê ataca, caso não se tenta se aproximar
 
 * Morteiro
   * Ataque de perto = 1 bloco (3 de dano)
-  * Vida = 28
+  * Vida = 28 (Rever)
   * Movimento = 0
   * IA = Se o jogador estiver na sua zona de alcance (x blocos) ele ataca
 
