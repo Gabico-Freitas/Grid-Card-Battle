@@ -8,7 +8,7 @@
 * Atributos jogador
   * Movimento = 3 quadrados, balancear por algumas cartas
   * Vida = 36
-  * Mana Regen. = 3 p/turno
+  * Mana Regen. = 5 p/turno
   * Quantidade de cartas na mão
 * Atributos Inimigos:
   * Vida
@@ -24,6 +24,10 @@
     * À distância
   * Status/Movimento (Se der tempo)
   * Defesa (Se der tempo)
+* Custo de cartas:
+  * Baratas = 1
+  * Médio = 2,3
+  * Caras = 4
 
 * Cartas Base (azul é o ataque):
   * Ataque 1 bloco
