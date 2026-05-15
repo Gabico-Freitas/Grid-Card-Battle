@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://23kwkbucxnuu"]
+
+[ext_resource type="Script" uid="uid://blk5iyj7tnsp1" path="res://scripts/battle.gd" id="1_6t8i5"]
+[ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="2_6t8i5"]
+[ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="3_0npn6"]
+[ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
+[ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
+[ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
+[ext_resource type="Script" uid="uid://dtt5myu7o5qo3" path="res://scripts/player_health_bar.gd" id="6_dw4jg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
+texture = ExtResource("2_6t8i5")
+texture_region_size = Vector2i(108, 108)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0npn6"]
+tile_size = Vector2i(108, 108)
+sources/0 = SubResource("TileSetAtlasSource_dw4jg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw4jg"]
+bg_color = Color(0.8862745, 0.023529412, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
+bg_color = Color(0.0627451, 0.7019608, 0, 1)
+
+[node name="Battle" type="Node2D" unique_id=387018158]
+script = ExtResource("1_6t8i5")
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=360654667 node_paths=PackedStringArray("player")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0npn6")
+script = ExtResource("3_0npn6")
+player = NodePath("Player")
+
+[node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("grid") instance=ExtResource("4_6t8i5")]
+grid = NodePath("..")
+
+[node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
+initial_pos = Vector2i(4, 3)
+grid = NodePath("..")
+
+[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
+initial_pos = Vector2i(5, 1)
+grid = NodePath("..")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="." unique_id=1902253333]
+offset_left = 891.0
+offset_top = 12.0
+offset_right = 1123.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dw4jg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0npn6")
+show_percentage = false
+script = ExtResource("6_dw4jg")
+
+[node name="PlayerHealth" type="Label" parent="PlayerHealthBar" unique_id=1461018509]
+layout_mode = 0
+offset_right = 231.0
+offset_bottom = 58.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="damaged" from="Grid/Player" to="PlayerHealthBar" method="_on_player_damaged"]
+[connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]

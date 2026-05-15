@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bdkog88sqqrjm"]
+
+[ext_resource type="Script" uid="uid://epqjl5o00cis" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bteu4o2684fu8" path="res://assets/jogador/Magico_Idle_2.png" id="2_onrkg"]
+
+[node name="Player" type="Node2D" unique_id=1581596336]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1874077630]
+texture = ExtResource("2_onrkg")

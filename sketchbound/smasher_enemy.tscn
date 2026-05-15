@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bk17pkxhh8gr"]
+
+[ext_resource type="Script" uid="uid://d8u6wfursh3n" path="res://scripts/esmagador.gd" id="1_4mexy"]
+[ext_resource type="Texture2D" uid="uid://bui1lhyi4row5" path="res://assets/inimigos/Construtor/Construtor_Idle_2.png" id="2_gaw2j"]
+
+[node name="SmasherEnemy" type="Node2D" unique_id=1695074079]
+script = ExtResource("1_4mexy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=672824573]
+texture = ExtResource("2_gaw2j")
