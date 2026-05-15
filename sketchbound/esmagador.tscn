@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bk17pkxhh8gr"]
-
-[ext_resource type="Script" uid="uid://melq1lbpxr34" path="res://scripts/esmagador.gd" id="1_cn3be"]
-
-[node name="Esmagador" type="Node2D" unique_id=1695074079]
-script = ExtResource("1_cn3be")
