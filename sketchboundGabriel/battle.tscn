@@ -1,0 +1,79 @@
+[gd_scene format=4 uid="uid://23kwkbucxnuu"]
+
+[ext_resource type="Script" uid="uid://blk5iyj7tnsp1" path="res://scripts/battle.gd" id="1_6t8i5"]
+[ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="2_6t8i5"]
+[ext_resource type="Script" uid="uid://c71h6y7dmxfxs" path="res://moves.gd" id="2_mhv3b"]
+[ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="3_0npn6"]
+[ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
+[ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
+[ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
+[ext_resource type="Script" uid="uid://dhdhiqsx46duj" path="res://scripts/health_bar.gd" id="8_mhv3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcjiy"]
+bg_color = Color(0.88797605, 0, 0.06845436, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol6im"]
+bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
+texture = ExtResource("2_6t8i5")
+texture_region_size = Vector2i(108, 108)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0npn6"]
+tile_size = Vector2i(108, 108)
+sources/0 = SubResource("TileSetAtlasSource_dw4jg")
+
+[node name="Battle" type="Node2D" unique_id=387018158]
+script = ExtResource("1_6t8i5")
+
+[node name="Moves" type="Label" parent="." unique_id=798493295]
+offset_left = 914.0
+offset_top = 123.0
+offset_right = 960.1041
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_mhv3b")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1781669255]
+offset_left = 891.0
+offset_top = 11.999999
+offset_right = 969.0
+offset_bottom = 39.0
+scale = Vector2(3.0054972, 2.241985)
+theme_override_styles/background = SubResource("StyleBoxFlat_lcjiy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ol6im")
+show_percentage = false
+script = ExtResource("8_mhv3b")
+
+[node name="Health" type="Label" parent="HealthBar" unique_id=1638359996]
+layout_mode = 0
+offset_left = 16.447937
+offset_top = 3.0
+offset_right = 62.552063
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=360654667]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0npn6")
+script = ExtResource("3_0npn6")
+
+[node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("health_bar", "grid") instance=ExtResource("4_6t8i5")]
+health_bar = NodePath("../../HealthBar")
+grid = NodePath("..")
+
+[node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
+initial_pos = Vector2i(2, 2)
+grid = NodePath("..")
+
+[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
+initial_pos = Vector2i(5, 1)
+grid = NodePath("..")
+
+[connection signal="moved" from="Grid/Player" to="Moves" method="_on_player_moved"]
+[connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]
