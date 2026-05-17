@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bljtaevx224hg" path="res://scripts/melee_enemy.gd" id="1_vn61j"]
 [ext_resource type="Texture2D" uid="uid://dpj0ekl1ru11h" path="res://assets/inimigos/Lutador/Lutador_Idle_2.png" id="2_legso"]
-[ext_resource type="Script" uid="uid://dhdhiqsx46duj" path="res://scripts/EnemyHealth.gd" id="3_legso"]
+[ext_resource type="Script" uid="uid://bcrvk5x4mbgii" path="res://scripts/health_bar.gd" id="3_legso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_legso"]
 bg_color = Color(0.88797605, 0, 0.06845436, 1)
@@ -35,4 +35,4 @@ offset_bottom = 26.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="damaged" from="." to="HealthBar" method="_on_melee_damaged"]
+[connection signal="damaged" from="." to="." method="_on_damaged"]

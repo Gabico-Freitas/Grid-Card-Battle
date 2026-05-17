@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot 3 specific ignores
+.import/
+
+# General ignores
+export.cfg
+export_credentials.cfg
+
+# Imported translations
+*.translation

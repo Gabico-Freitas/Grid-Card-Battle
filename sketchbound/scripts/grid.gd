@@ -15,6 +15,7 @@ func _ready() -> void:
 	astar = AStarGrid2D.new()
 	astar.region = get_used_rect()
 	astar.cell_size = Vector2i(108,108)
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar.update()
 
 func get_entity(pos:Vector2i) -> Entity:

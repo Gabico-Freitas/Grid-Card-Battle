@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
 [ext_resource type="Script" uid="uid://dtt5myu7o5qo3" path="res://scripts/player_health_bar.gd" id="6_dw4jg"]
+[ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
 texture = ExtResource("2_6t8i5")
@@ -41,6 +42,10 @@ grid = NodePath("..")
 
 [node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
 initial_pos = Vector2i(5, 1)
+grid = NodePath("..")
+
+[node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("7_mhv3b")]
+initial_pos = Vector2i(6, 1)
 grid = NodePath("..")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="." unique_id=1902253333]

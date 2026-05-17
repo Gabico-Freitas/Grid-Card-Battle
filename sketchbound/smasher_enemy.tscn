@@ -2,9 +2,37 @@
 
 [ext_resource type="Script" uid="uid://d8u6wfursh3n" path="res://scripts/esmagador.gd" id="1_4mexy"]
 [ext_resource type="Texture2D" uid="uid://bui1lhyi4row5" path="res://assets/inimigos/Construtor/Construtor_Idle_2.png" id="2_gaw2j"]
+[ext_resource type="Script" uid="uid://bcrvk5x4mbgii" path="res://scripts/health_bar.gd" id="3_vadps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv67h"]
+bg_color = Color(0.88797605, 0, 0.06845436, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ursb"]
+bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
 
 [node name="SmasherEnemy" type="Node2D" unique_id=1695074079]
 script = ExtResource("1_4mexy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=672824573]
 texture = ExtResource("2_gaw2j")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=877597661]
+offset_left = -38.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pv67h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ursb")
+show_percentage = false
+script = ExtResource("3_vadps")
+
+[node name="Health" type="Label" parent="HealthBar" unique_id=1824030287]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 26.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="damaged" from="." to="." method="_on_damaged"]

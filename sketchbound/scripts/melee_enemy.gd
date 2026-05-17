@@ -1,11 +1,12 @@
 extends Enemy
 class_name Melee
 
+@onready var health_bar = $HealthBar
 var move_points : int
 
 func _ready() -> void:
 	hp = 20
-	$HealthBar.setUp(hp)
+	health_bar.set_up(hp)
 
 func do_turn() -> void:
 	move_points = 1
@@ -30,3 +31,6 @@ func _try_attack() -> bool:
 				entity.take_damage(5)
 				return true
 	return false
+
+func _on_damaged(_value: int) -> void:
+	health_bar.update_health(hp)
