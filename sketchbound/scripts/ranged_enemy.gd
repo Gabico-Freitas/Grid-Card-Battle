@@ -16,11 +16,15 @@ func do_turn() -> void:
 		if _try_attack(): return
 
 func _try_attack() -> bool:
-	var target_cell = grid.get_entity_pos(self) + Vector2i(0, 1)
-	var entity = grid.get_entity(target_cell)
-	if entity is Player:
-		entity.take_damage(8)
-		return true
+	for i in range(-3, 4):
+		for j in range(-3, 4):
+			if i !=0 and j != 0:
+				continue
+			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
+			var entity = grid.get_entity(target_cell)
+			if entity is Player:
+				entity.take_damage(5)
+				return true
 	return false
 
 func _on_damaged(_value: int) -> void:
