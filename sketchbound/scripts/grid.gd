@@ -36,6 +36,9 @@ func set_entity_pos(e:Entity, new_pos:Vector2i) -> void:
 	cell_content.erase(get_entity_pos(e))
 	cell_content[new_pos] = e
 
+func erase_entity(e:Entity) -> void:
+	cell_content.erase(get_entity_pos(e))
+
 func move_up(e:Entity) -> bool:
 	var cell = get_entity_pos(e)
 	var up_cell = get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_TOP_SIDE)

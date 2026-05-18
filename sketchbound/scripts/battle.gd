@@ -13,11 +13,16 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
-	player.my_turn = true
+	player.new_turn_refresh()
 
 func enemies_turn() -> void:
+	var living_enemies:Array[Enemy] = []
 	for e in enemies:
-		e.do_turn()
+		if e.is_dead(): e.queue_free()
+		else: living_enemies.append(e)
+	enemies = living_enemies
+	
+	for e in enemies: e.do_turn()
 	
 	if player.is_dead(): get_tree().quit()
 	player.new_turn_refresh()

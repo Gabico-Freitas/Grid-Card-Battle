@@ -1,3 +1,4 @@
+@abstract
 extends Node2D
 class_name Entity
 
@@ -13,8 +14,10 @@ func _process(_delta: float) -> void:
 
 func take_damage(dmg:int) -> void:
 	hp -= dmg
-	if hp<0:
-		hp=0
+	if is_dead(): 
+		grid.erase_entity(self)
+		self.hide()
+		process_mode = Node.PROCESS_MODE_DISABLED
 	damaged.emit(hp)
 
 func is_dead() -> bool:

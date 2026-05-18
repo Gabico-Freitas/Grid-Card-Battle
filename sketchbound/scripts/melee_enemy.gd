@@ -9,7 +9,7 @@ func _ready() -> void:
 	health_bar.set_up(hp)
 
 func do_turn() -> void:
-	move_points = 1
+	move_points = 2
 	var path = grid.path_to_player(self)
 	
 	if _try_attack(): return
