@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cjd7m22tuvfs3"]
+
+[ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://UI/Grid Card Battle.png" id="1_tuusc"]
+[ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="2_iefc8"]
+[ext_resource type="Script" uid="uid://damy2anfd6mir" path="res://UI/exit_button.gd" id="3_dvy0b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iefc8"]
+texture = ExtResource("1_tuusc")
+modulate_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylmtb"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iefc8"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 78
+corner_radius_top_right = 78
+corner_radius_bottom_right = 78
+corner_radius_bottom_left = 78
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuusc"]
+bg_color = Color(0.010877021, 0.47403985, 0.593673, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuusc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iefc8"]
+
+[node name="Control" type="Control" unique_id=1956926831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1656387621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_iefc8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=886121640]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -156.0
+offset_right = 198.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=2045509040]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ylmtb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tuusc")
+text = "START GAME"
+
+[node name="ButtonEffects" type="Node" parent="VBoxContainer/StartButton" unique_id=1903309155]
+script = ExtResource("2_iefc8")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer" unique_id=1203505707]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ylmtb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iefc8")
+text = "CONTROLES"
+
+[node name="ButtonEffects" type="Node" parent="VBoxContainer/OptionButton" unique_id=741146716]
+script = ExtResource("2_iefc8")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1974171656]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ylmtb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iefc8")
+text = "EXIT GAME"
+script = ExtResource("3_dvy0b")
+
+[node name="ButtonEffects" type="Node" parent="VBoxContainer/ExitButton" unique_id=724457754]
+script = ExtResource("2_iefc8")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="Label" type="Label" parent="." unique_id=598600454]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -305.0
+offset_right = 177.0
+offset_bottom = -193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "SketchBound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_pressed"]
