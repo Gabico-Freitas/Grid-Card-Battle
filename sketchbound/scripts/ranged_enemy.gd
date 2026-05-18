@@ -24,6 +24,9 @@ func _try_attack() -> bool:
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
 				entity.take_damage(5)
+				#var me  = grid.get_entity_pos(self)
+				#if (player[0] - me[0] and play[1] - me[1]):
+					#grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
 				return true
 	return false
 
