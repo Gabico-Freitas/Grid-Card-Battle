@@ -35,6 +35,8 @@ func set_entity_pos(e:Entity, new_pos:Vector2i) -> void:
 	if(cell_content.has(new_pos)): return
 	cell_content.erase(get_entity_pos(e))
 	cell_content[new_pos] = e
+	print(get_used_rect())
+	
 
 func erase_entity(e:Entity) -> void:
 	cell_content.erase(get_entity_pos(e))

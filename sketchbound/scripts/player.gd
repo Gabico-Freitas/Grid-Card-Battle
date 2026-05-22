@@ -22,7 +22,7 @@ func _ready() -> void:
 	moved.emit(move_points,MAX_MOVE_POINTS)
 	#TEMPORARY!!! (TODO) (Deck provavelmente vai ficar num autoload)
 	for i in range(10):
-		draw_pile.append(PunchCard.new())
+		draw_pile.append(ArrowCard.new())
 	draw_pile.shuffle()
 
 func new_turn_refresh() -> void:

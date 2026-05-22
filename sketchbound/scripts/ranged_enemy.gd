@@ -9,11 +9,17 @@ func _ready() -> void:
 
 func do_turn() -> void:
 	move_points = 1
+	var path = grid.path_to_player(self)
+	
 	if _try_attack(): return
 	while(move_points > 0):
-		grid.move_right(self)
+		if path.is_empty(): return
+		var next_cell = path.pop_front()
+		grid.set_entity_pos(self, next_cell)
 		move_points -= 1
 		if _try_attack(): return
+		
+			
 
 func _try_attack() -> bool:
 	for i in range(-3, 4):
@@ -24,9 +30,28 @@ func _try_attack() -> bool:
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
 				entity.take_damage(5)
-				#var me  = grid.get_entity_pos(self)
-				#if (player[0] - me[0] and play[1] - me[1]):
-					#grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
+				if(_try_attack_step()):
+					if(i ==0 && j > 0):
+						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, -1))
+					elif(i ==0 && j < 0):
+						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, 1))
+					elif(i <0 && j ==0 ):
+						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
+					elif(i >0 && j == 0):
+						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(-1, 0))
+				return true
+	return false
+	
+func _try_attack_step() -> bool:
+	#fazer um for para cada posição possivel do player (que são as 4 direções de ataque)
+	for i in range(-2, 3):
+		for j in range(-2, 3):
+			if i !=0 and j != 0:
+				continue
+			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
+			var entity = grid.get_entity(target_cell)
+			if entity is Player:
+				#entity.take_damage(5)
 				return true
 	return false
 
