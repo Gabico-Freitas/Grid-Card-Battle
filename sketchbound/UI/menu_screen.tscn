@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjd7m22tuvfs3"]
 
 [ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://UI/Grid Card Battle.png" id="1_tuusc"]
+[ext_resource type="Script" uid="uid://nee5staqw5ds" path="res://UI/start_button.gd" id="2_2ygxs"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="2_iefc8"]
 [ext_resource type="Script" uid="uid://damy2anfd6mir" path="res://UI/exit_button.gd" id="3_dvy0b"]
 
@@ -86,6 +87,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tuusc")
 text = "START GAME"
+script = ExtResource("2_2ygxs")
 
 [node name="ButtonEffects" type="Node" parent="VBoxContainer/StartButton" unique_id=1903309155]
 script = ExtResource("2_iefc8")
@@ -138,4 +140,5 @@ text = "SketchBound"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_pressed"]

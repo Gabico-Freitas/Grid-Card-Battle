@@ -14,11 +14,12 @@ var selected_card : Card = null
 var aim_direction : Direction
 
 signal turn_ended
+signal moved(curr_moves: int, max_moves:int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp = 36
-	
+	moved.emit(move_points,MAX_MOVE_POINTS)
 	#TEMPORARY!!! (TODO) (Deck provavelmente vai ficar num autoload)
 	for i in range(10):
 		draw_pile.append(PunchCard.new())
@@ -28,7 +29,7 @@ func new_turn_refresh() -> void:
 	move_points = MAX_MOVE_POINTS
 	mana = MAX_MANA
 	my_turn = true
-	
+	moved.emit(move_points,MAX_MOVE_POINTS)
 	discard_pile.append_array(hand)
 	hand.clear()
 	
@@ -85,15 +86,19 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 		if (event.is_action_pressed("Up")):
 			if grid.move_up(self):
 				move_points -= 1
+				moved.emit(move_points,MAX_MOVE_POINTS)
 		elif (event.is_action_pressed("Right")):
 			if grid.move_right(self):
 				move_points -= 1
+				moved.emit(move_points,MAX_MOVE_POINTS)
 		elif (event.is_action_pressed("Down")):
 			if grid.move_down(self):
 				move_points -= 1
+				moved.emit(move_points,MAX_MOVE_POINTS)
 		elif (event.is_action_pressed("Left")):
 			if grid.move_left(self):
 				move_points -= 1
+				moved.emit(move_points,MAX_MOVE_POINTS)
 	
 	var selected_card_number = -1
 	if(event.is_action_pressed("SelectCard1")): selected_card_number = 1

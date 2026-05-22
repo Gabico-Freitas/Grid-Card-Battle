@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bj7h01gavekdv"]
 
-[ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://Grid Card Battle.png" id="1_ccer4"]
-[ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://button_animations.gd" id="1_y26ei"]
-[ext_resource type="Script" uid="uid://dth4x2llsu6o4" path="res://menu_button.gd" id="2_ccer4"]
+[ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://UI/Grid Card Battle.png" id="1_ccer4"]
+[ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://dth4x2llsu6o4" path="res://UI/menu_button.gd" id="2_ccer4"]
+[ext_resource type="Script" uid="uid://cdtkj6dclb8ye" path="res://UI/retry_button.gd" id="4_phit2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccer4"]
 texture = ExtResource("1_ccer4")
@@ -121,9 +122,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yxx3c")
 text = "RETRY"
+script = ExtResource("4_phit2")
 
 [node name="ButtonEffects" type="Node" parent="HFlowContainer/RetryButton" unique_id=1679678329]
 script = ExtResource("1_y26ei")
 metadata/_custom_type_script = "uid://dinccf3l0huxg"
 
 [connection signal="pressed" from="HFlowContainer/MenuButton" to="HFlowContainer/MenuButton" method="_on_pressed"]
+[connection signal="pressed" from="HFlowContainer/RetryButton" to="HFlowContainer/RetryButton" method="_on_pressed"]

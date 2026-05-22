@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
 [ext_resource type="Script" uid="uid://dtt5myu7o5qo3" path="res://scripts/player_health_bar.gd" id="6_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
+[ext_resource type="Script" uid="uid://cjrtfjt0gg42x" path="res://UI/moves.gd" id="9_lcjiy"]
+[ext_resource type="Texture2D" uid="uid://dn5m7jt43thvc" path="res://UI/card.png" id="10_ol6im"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
 texture = ExtResource("2_6t8i5")
@@ -48,22 +50,113 @@ grid = NodePath("..")
 initial_pos = Vector2i(6, 1)
 grid = NodePath("..")
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="." unique_id=1902253333]
-offset_left = 891.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1954383597]
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1902253333]
+offset_left = 886.0
 offset_top = 12.0
-offset_right = 1123.0
+offset_right = 1118.0
 offset_bottom = 72.0
 theme_override_styles/background = SubResource("StyleBoxFlat_dw4jg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0npn6")
 show_percentage = false
 script = ExtResource("6_dw4jg")
 
-[node name="PlayerHealth" type="Label" parent="PlayerHealthBar" unique_id=1461018509]
+[node name="PlayerHealth" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=1461018509]
 layout_mode = 0
 offset_right = 231.0
 offset_bottom = 58.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="damaged" from="Grid/Player" to="PlayerHealthBar" method="_on_player_damaged"]
+[node name="Moves" type="Label" parent="CanvasLayer" unique_id=1387218239]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -203.0
+offset_right = -114.0
+offset_bottom = -164.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("9_lcjiy")
+
+[node name="Carta1" type="TextureRect" parent="CanvasLayer" unique_id=243826308]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -438.0
+offset_top = -208.0
+offset_right = -283.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_ol6im")
+expand_mode = 5
+
+[node name="Carta2" type="TextureRect" parent="CanvasLayer" unique_id=1030753074]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = -210.0
+offset_right = -123.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_ol6im")
+expand_mode = 5
+
+[node name="Carta3" type="TextureRect" parent="CanvasLayer" unique_id=1436193326]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -210.0
+offset_right = 41.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_ol6im")
+expand_mode = 5
+
+[node name="Carta4" type="TextureRect" parent="CanvasLayer" unique_id=717514266]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -210.0
+offset_right = 214.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_ol6im")
+expand_mode = 5
+
+[node name="Carta5" type="TextureRect" parent="CanvasLayer" unique_id=2075442752]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = -206.0
+offset_right = 377.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_ol6im")
+expand_mode = 5
+
+[connection signal="damaged" from="Grid/Player" to="CanvasLayer/PlayerHealthBar" method="_on_player_damaged"]
+[connection signal="moved" from="Grid/Player" to="CanvasLayer/Moves" method="_on_player_moved"]
 [connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]

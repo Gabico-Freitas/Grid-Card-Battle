@@ -24,7 +24,7 @@ func enemies_turn() -> void:
 	
 	for e in enemies: e.do_turn()
 	
-	if player.is_dead(): get_tree().quit()
+	if player.is_dead(): get_tree().change_scene_to_file("res://UI/game_over.tscn")
 	player.new_turn_refresh()
 	pass
 
