@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://6u1vuab8jcxr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_546sr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne3cn"]
+bg_color = Color(0.21135244, 0.5038735, 0.6413568, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 45
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_546sr"]
+bg_color = Color(0.30893326, 0.64346, 0.8055686, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 45
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ne3cn"]
+load_path = "res://.godot/imported/card.png-a2ee66e92f20fddb7086e87019ebf5fa.ctex"
+
+[node name="ui_cartas" type="Control" unique_id=464823249]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.0
+offset_top = -212.0
+offset_right = -114.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642404113]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -422.0
+offset_top = -201.0
+offset_right = 396.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button1" type="Button" parent="HBoxContainer" unique_id=463781986]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
+icon = SubResource("CompressedTexture2D_ne3cn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=1632091356]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
+icon = SubResource("CompressedTexture2D_ne3cn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=536671151]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
+icon = SubResource("CompressedTexture2D_ne3cn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1253892283]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
+icon = SubResource("CompressedTexture2D_ne3cn")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button5" type="Button" parent="HBoxContainer" unique_id=1726384659]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
+icon = SubResource("CompressedTexture2D_ne3cn")
+icon_alignment = 1
+expand_icon = true
