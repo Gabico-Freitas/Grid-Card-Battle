@@ -10,26 +10,37 @@ var draw_pile : Array[Card] = []
 var hand : Array[Card] = []
 var discard_pile : Array[Card] = []
 
+@export var hand_cards: Hand_Card
+var aiming = false
+
 var selected_card : Card = null
 var aim_direction : Direction
 
 signal turn_ended
 signal moved(curr_moves: int, max_moves:int)
+signal mana_spent(curr_mana: int, max_mana: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp = 36
 	moved.emit(move_points,MAX_MOVE_POINTS)
+	mana_spent.emit(mana, MAX_MANA)
 	#TEMPORARY!!! (TODO) (Deck provavelmente vai ficar num autoload)
 	for i in range(10):
-		draw_pile.append(ArrowCard.new())
+		draw_pile.append(PunchCard.new())
 	draw_pile.shuffle()
+	
+	$seta_dir.visible = true
+	$seta_baixo.visible = false
+	$seta_cima.visible = false
+	$seta_esq.visible = false
 
 func new_turn_refresh() -> void:
 	move_points = MAX_MOVE_POINTS
 	mana = MAX_MANA
 	my_turn = true
 	moved.emit(move_points,MAX_MOVE_POINTS)
+	mana_spent.emit(mana, MAX_MANA)
 	discard_pile.append_array(hand)
 	hand.clear()
 	
@@ -40,6 +51,8 @@ func _draw_cards() -> void:
 		if(draw_pile.size() == 0): _discard_to_draw()
 		var c = draw_pile.pop_front()
 		hand.append(c)
+	if is_instance_valid(hand_cards):
+		hand_cards.update_hand(hand)
 
 func _discard_to_draw() -> void:
 	draw_pile.append_array(discard_pile)
@@ -52,9 +65,12 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	mana -= c.mana_cost
 	move_points -= c.movement_cost
 	
+	moved.emit(move_points,MAX_MOVE_POINTS)
+	mana_spent.emit(mana, MAX_MANA)
+	
 	var aof
 	match dir:
-		Direction.UP: aof = c.get_aof_up()
+		Direction.UP: aof = c.get_aof_up() 
 		Direction.RIGHT: aof = c.get_aof_right()
 		Direction.DOWN: aof = c.get_aof_down()
 		Direction.LEFT: aof = c.get_aof_left()
@@ -67,6 +83,8 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	
 	hand.erase(c)
 	discard_pile.append(c)
+	if is_instance_valid(hand_cards):
+		hand_cards.update_hand(hand)
 	
 	return true
 
@@ -115,10 +133,30 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 func _handle_input_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("UnselectCard")): selected_card = null
 	
-	if(event.is_action_pressed("AimUp")): aim_direction = Direction.UP
-	if(event.is_action_pressed("AimRight")): aim_direction = Direction.RIGHT
-	if(event.is_action_pressed("AimDown")): aim_direction = Direction.DOWN
-	if(event.is_action_pressed("AimLeft")): aim_direction = Direction.LEFT
+	if(event.is_action_pressed("AimUp")): 
+		aim_direction = Direction.UP
+		$seta_dir.visible = false
+		$seta_baixo.visible = false
+		$seta_cima.visible = true
+		$seta_esq.visible = false
+	if(event.is_action_pressed("AimRight")):
+		aim_direction = Direction.RIGHT
+		$seta_dir.visible = true
+		$seta_baixo.visible = false
+		$seta_cima.visible = false
+		$seta_esq.visible = false
+	if(event.is_action_pressed("AimDown")):
+		aim_direction = Direction.DOWN
+		$seta_dir.visible = false
+		$seta_baixo.visible = true
+		$seta_cima.visible = false
+		$seta_esq.visible = false
+	if(event.is_action_pressed("AimLeft")):
+		aim_direction = Direction.LEFT
+		$seta_dir.visible = false
+		$seta_baixo.visible = false
+		$seta_cima.visible = false
+		$seta_esq.visible = true
 	
 	if(event.is_action_pressed("UseCard")): 
 		_use_card(selected_card, aim_direction)

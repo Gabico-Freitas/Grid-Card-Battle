@@ -2,7 +2,7 @@ extends Card
 class_name PunchCard
 
 func _init() -> void:
-	id = 0
+	id = 5
 	mana_cost = 1
 	damage = 3
 	area_of_effect = []

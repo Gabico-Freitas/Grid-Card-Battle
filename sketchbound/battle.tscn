@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dtt5myu7o5qo3" path="res://scripts/player_health_bar.gd" id="6_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
 [ext_resource type="Script" uid="uid://cjrtfjt0gg42x" path="res://UI/moves.gd" id="9_lcjiy"]
+[ext_resource type="Script" uid="uid://b1av6pv2qsxof" path="res://UI/mana.gd" id="10_b1i6x"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
@@ -35,7 +36,8 @@ tile_set = SubResource("TileSet_0npn6")
 script = ExtResource("3_0npn6")
 player = NodePath("Player")
 
-[node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("grid") instance=ExtResource("4_6t8i5")]
+[node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("hand_cards", "grid") instance=ExtResource("4_6t8i5")]
+hand_cards = NodePath("../../CanvasLayer/ui_cartas")
 grid = NodePath("..")
 
 [node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
@@ -52,42 +54,62 @@ grid = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1954383597]
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1902253333]
-offset_left = 886.0
-offset_top = 12.0
-offset_right = 1118.0
-offset_bottom = 72.0
+[node name="ui_cartas" parent="CanvasLayer" unique_id=464823249 node_paths=PackedStringArray("player") instance=ExtResource("10_ol6im")]
+offset_left = 161.0
+offset_top = -207.0
+offset_right = -45.0
+player = NodePath("../../Grid/Player")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=855558195]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_top = 6.0
+offset_right = -9.0
+offset_bottom = 194.0
+grow_horizontal = 0
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=1902253333]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_dw4jg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0npn6")
 show_percentage = false
 script = ExtResource("6_dw4jg")
 
-[node name="PlayerHealth" type="Label" parent="CanvasLayer/PlayerHealthBar" unique_id=1461018509]
+[node name="PlayerHealth" type="Label" parent="CanvasLayer/VBoxContainer2/PlayerHealthBar" unique_id=1461018509]
 layout_mode = 0
-offset_right = 231.0
+offset_left = 25.0
+offset_right = 256.0
 offset_bottom = 58.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Moves" type="Label" parent="CanvasLayer" unique_id=1387218239]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -203.0
-offset_right = -114.0
-offset_bottom = -164.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer2" unique_id=459230156]
+light_mask = 0
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=1891080763]
+layout_mode = 2
+
+[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1387218239]
+layout_mode = 2
 script = ExtResource("9_lcjiy")
 
-[node name="ui_cartas" parent="CanvasLayer" unique_id=464823249 instance=ExtResource("10_ol6im")]
-offset_left = 161.0
-offset_top = -207.0
-offset_right = -174.0
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=427383156]
+light_mask = 0
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
 
-[connection signal="damaged" from="Grid/Player" to="CanvasLayer/PlayerHealthBar" method="_on_player_damaged"]
-[connection signal="moved" from="Grid/Player" to="CanvasLayer/Moves" method="_on_player_moved"]
+[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1698429586]
+layout_mode = 2
+script = ExtResource("10_b1i6x")
+
+[connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBar" method="_on_player_damaged"]
+[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/Mana" method="_on_player_mana_spent"]
+[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/Moves" method="_on_player_moved"]
 [connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]

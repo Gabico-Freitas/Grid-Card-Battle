@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://6u1vuab8jcxr"]
 
+[ext_resource type="Script" uid="uid://cjv8tcj5rl81w" path="res://UI/CartasUI/card_ui.gd" id="1_dcy8i"]
+[ext_resource type="Script" uid="uid://cqtwdw30rlujs" path="res://UI/CartasUI/hand_cards.gd" id="1_psyu5"]
+[ext_resource type="Script" uid="uid://dryg1u2akk33r" path="res://UI/CartasUI/card_animations.gd" id="2_7xfof"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_546sr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne3cn"]
@@ -16,9 +20,6 @@ corner_radius_top_right = 45
 corner_radius_bottom_right = 17
 corner_radius_bottom_left = 17
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ne3cn"]
-load_path = "res://.godot/imported/card.png-a2ee66e92f20fddb7086e87019ebf5fa.ctex"
-
 [node name="ui_cartas" type="Control" unique_id=464823249]
 layout_mode = 3
 anchors_preset = 12
@@ -26,13 +27,14 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 174.0
-offset_top = -212.0
+offset_top = -223.0
 offset_right = -114.0
-offset_bottom = -2.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_psyu5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642404113]
 layout_mode = 1
@@ -51,46 +53,58 @@ grow_vertical = 0
 [node name="Button1" type="Button" parent="HBoxContainer" unique_id=463781986]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-focus_neighbor_right = NodePath("../Button2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
-icon = SubResource("CompressedTexture2D_ne3cn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("1_dcy8i")
+
+[node name="CardEffects" type="Node" parent="HBoxContainer/Button1" unique_id=1449398316]
+script = ExtResource("2_7xfof")
+metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
 [node name="Button2" type="Button" parent="HBoxContainer" unique_id=1632091356]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-focus_neighbor_right = NodePath("../Button3")
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
-icon = SubResource("CompressedTexture2D_ne3cn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("1_dcy8i")
+
+[node name="CardEffects" type="Node" parent="HBoxContainer/Button2" unique_id=482317084]
+script = ExtResource("2_7xfof")
+metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
 [node name="Button3" type="Button" parent="HBoxContainer" unique_id=536671151]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-focus_neighbor_right = NodePath("../Button4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
-icon = SubResource("CompressedTexture2D_ne3cn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("1_dcy8i")
+
+[node name="CardEffects" type="Node" parent="HBoxContainer/Button3" unique_id=291249812]
+script = ExtResource("2_7xfof")
+metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
 [node name="Button4" type="Button" parent="HBoxContainer" unique_id=1253892283]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-focus_neighbor_right = NodePath("../Button5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
-icon = SubResource("CompressedTexture2D_ne3cn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("1_dcy8i")
+
+[node name="CardEffects" type="Node" parent="HBoxContainer/Button4" unique_id=1832537105]
+script = ExtResource("2_7xfof")
+metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
 [node name="Button5" type="Button" parent="HBoxContainer" unique_id=1726384659]
 custom_minimum_size = Vector2(160, 0)
@@ -98,6 +112,16 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ne3cn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_546sr")
-icon = SubResource("CompressedTexture2D_ne3cn")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("1_dcy8i")
+
+[node name="CardEffects" type="Node" parent="HBoxContainer/Button5" unique_id=994003781]
+script = ExtResource("2_7xfof")
+metadata/_custom_type_script = "uid://dryg1u2akk33r"
+
+[connection signal="pressed" from="HBoxContainer/Button1" to="HBoxContainer/Button1" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button3" to="HBoxContainer/Button3" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button4" to="HBoxContainer/Button4" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button5" to="HBoxContainer/Button5" method="_on_pressed"]

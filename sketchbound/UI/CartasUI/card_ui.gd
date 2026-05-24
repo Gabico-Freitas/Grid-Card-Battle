@@ -1,15 +1,26 @@
-extends Node
+extends Button
 class_name Card_Ui
 
-var card_id = 0
+@onready var player: Player
+@onready var event: InputEvent
+
+var card_data : Card
 var pos_hand: int
 
-signal card_selected(card_pos: String);
+signal card_selected(Card_Ui);
 
-func set_up(id: int, pos: int) -> void:
-	card_id = id
+func _ready() -> void:
+	focus_mode = Control.FOCUS_NONE
+
+func setup(card: Card, pos: int):
+	card_data = card
 	pos_hand = pos
-	
+
+func set_card(card: Card) -> void:
+	card_data = card
+
+func set_pos(pos: int) -> void:
+	pos_hand = pos
+
 func _on_pressed() -> void:
-	var card_selected_var = "SelectCard" + str(card_id)
-	card_selected.emit(card_selected_var)
+	card_selected.emit(self)
