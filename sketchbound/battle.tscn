@@ -38,6 +38,7 @@ player = NodePath("Player")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("hand_cards", "grid") instance=ExtResource("4_6t8i5")]
 hand_cards = NodePath("../../CanvasLayer/ui_cartas")
+initial_pos = null
 grid = NodePath("..")
 
 [node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
