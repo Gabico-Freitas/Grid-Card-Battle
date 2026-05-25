@@ -16,11 +16,14 @@ func _ready() -> void:
 	player.new_turn_refresh()
 
 func enemies_turn() -> void:
+	
 	var living_enemies:Array[Enemy] = []
 	for e in enemies:
 		if e.is_dead(): e.queue_free()
 		else: living_enemies.append(e)
 	enemies = living_enemies
+	
+	if enemies.is_empty(): get_tree().change_scene_to_file("res://UI/win_screen.tscn")
 	
 	for e in enemies: e.do_turn()
 	

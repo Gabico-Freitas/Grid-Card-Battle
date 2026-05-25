@@ -14,7 +14,7 @@ var discard_pile : Array[Card] = []
 var aiming = false
 
 var selected_card : Card = null
-var aim_direction : Direction
+var aim_direction := Direction.RIGHT
 
 signal turn_ended
 signal moved(curr_moves: int, max_moves:int)
@@ -25,9 +25,7 @@ func _ready() -> void:
 	hp = 36
 	moved.emit(move_points,MAX_MOVE_POINTS)
 	mana_spent.emit(mana, MAX_MANA)
-	#TEMPORARY!!! (TODO) (Deck provavelmente vai ficar num autoload)
-	for i in range(10):
-		draw_pile.append(PunchCard.new())
+	draw_pile = GlobalData.deck
 	draw_pile.shuffle()
 	
 	$seta_dir.visible = true
@@ -51,8 +49,7 @@ func _draw_cards() -> void:
 		if(draw_pile.size() == 0): _discard_to_draw()
 		var c = draw_pile.pop_front()
 		hand.append(c)
-	if is_instance_valid(hand_cards):
-		hand_cards.update_hand(hand)
+	hand_cards.update_hand(hand)
 
 func _discard_to_draw() -> void:
 	draw_pile.append_array(discard_pile)
@@ -126,9 +123,7 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("SelectCard5")): selected_card_number = 5
 	var card
 	if(selected_card_number > 0 and selected_card_number <= hand.size()): card = hand.get(selected_card_number - 1)
-	if card != null: 
-		selected_card = card
-		aim_direction = Direction.UP
+	if card != null: selected_card = card
 
 func _handle_input_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("UnselectCard")): selected_card = null

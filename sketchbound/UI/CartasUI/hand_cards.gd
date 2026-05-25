@@ -16,25 +16,6 @@ func _ready() -> void:
 			i+=1
 		
 
-func assign_card(card: Card) -> void:
-	cards[current_card].set_card(card)
-	print(card.id)
-	if card.id ==1:
-		cards[current_card].icon = ResourceLoader.load("res://UI/cards_images/spear_image.png")
-	if card.id ==2:
-		cards[current_card].icon = ResourceLoader.load("res://UI/cards_images/arrow_image.png")
-	if card.id ==3:
-		cards[current_card].icon = ResourceLoader.load("res://UI/cards_images/slash_image.png")
-	if card.id ==4:
-		cards[current_card].icon = ResourceLoader.load("res://UI/cards_images/hammer_image.png")
-	if card.id ==5:
-		cards[current_card].icon = ResourceLoader.load("res://UI/cards_images/punch_image.png")
-	
-	if current_card==5:
-		current_card =0
-	else:
-		current_card+=1
-
 func _on_card_selected(card_ui: Card_Ui): #Falta fazer
 	var event = InputEventKey.new()
 
