@@ -32,11 +32,9 @@ func get_entity_world_coordinates(e:Entity) -> Vector2:
 	return map_to_local(pos)
 
 func set_entity_pos(e:Entity, new_pos:Vector2i) -> void:
-	if(cell_content.has(new_pos)): return
+	if(cell_content.has(new_pos) or !_cell_exists(new_pos)): return
 	cell_content.erase(get_entity_pos(e))
 	cell_content[new_pos] = e
-	print(get_used_rect())
-	
 
 func erase_entity(e:Entity) -> void:
 	cell_content.erase(get_entity_pos(e))
@@ -76,6 +74,9 @@ func move_left(e:Entity) -> bool:
 		return true
 	else:
 		return false
+
+func highlight_cell(pos:Vector2i) -> void:
+	set_cell(pos, 0, Vector2i(1, 0))
 
 func path_to_player(e:Enemy) -> Array[Vector2i]:
 		astar.fill_solid_region(get_used_rect(), false)
