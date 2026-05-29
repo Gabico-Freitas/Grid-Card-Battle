@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_player_mana_spent(curr_mana: int, max_mana: int) -> void:
-	self.text = "Mana: " + str(curr_mana) +" / "+ str(max_mana)
+	self.text = "   "+str(curr_mana) +" / "+ str(max_mana)

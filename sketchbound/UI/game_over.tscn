@@ -79,7 +79,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 128
-text = "GAME OVER"
+text = "VOCÊ PERDEU"
 horizontal_alignment = 1
 
 [node name="HFlowContainer" type="HFlowContainer" parent="." unique_id=474655066]
@@ -89,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = 46.0
-offset_right = 208.0
-offset_bottom = 196.0
+offset_left = -225.0
+offset_top = 41.0
+offset_right = 248.0
+offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 138
@@ -114,14 +114,15 @@ script = ExtResource("1_y26ei")
 metadata/_custom_type_script = "uid://dinccf3l0huxg"
 
 [node name="RetryButton" type="Button" parent="HFlowContainer" unique_id=1766537706]
-custom_minimum_size = Vector2(138, 0)
+custom_minimum_size = Vector2(163, 0)
 layout_direction = 2
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yxx3c")
-text = "RETRY"
+text = "TENTAR NOVAMENTE"
 script = ExtResource("4_phit2")
 
 [node name="ButtonEffects" type="Node" parent="HFlowContainer/RetryButton" unique_id=1679678329]

@@ -87,7 +87,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ylmtb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tuusc")
-text = "START GAME"
+text = "JOGAR"
 script = ExtResource("2_2ygxs")
 
 [node name="ButtonEffects" type="Node" parent="VBoxContainer/StartButton" unique_id=1903309155]
@@ -116,7 +116,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ylmtb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iefc8")
-text = "EXIT GAME"
+text = "FECHAR JOGO"
 script = ExtResource("3_dvy0b")
 
 [node name="ButtonEffects" type="Node" parent="VBoxContainer/ExitButton" unique_id=724457754]

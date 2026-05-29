@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://23kwkbucxnuu"]
 
 [ext_resource type="Script" uid="uid://blk5iyj7tnsp1" path="res://scripts/battle.gd" id="1_6t8i5"]
+[ext_resource type="Texture2D" uid="uid://crsqp6qd2ojy3" path="res://UI/Icons/Mesas/MesaPlasticoV2.png" id="2_4s0ev"]
 [ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="2_6t8i5"]
 [ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="3_0npn6"]
 [ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
@@ -10,7 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
 [ext_resource type="Script" uid="uid://cjrtfjt0gg42x" path="res://UI/moves.gd" id="9_lcjiy"]
 [ext_resource type="Script" uid="uid://b1av6pv2qsxof" path="res://UI/mana.gd" id="10_b1i6x"]
+[ext_resource type="Texture2D" uid="uid://bt46x6x38v61m" path="res://UI/Icons/MovimentoColorido.png" id="10_elvfr"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
+[ext_resource type="Texture2D" uid="uid://cpnyykmgyf6hc" path="res://UI/Icons/ManaColorido.png" id="10_sl0w2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
+texture = ExtResource("2_4s0ev")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
 texture = ExtResource("2_6t8i5")
@@ -28,8 +34,28 @@ bg_color = Color(0.8862745, 0.023529412, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
 bg_color = Color(0.0627451, 0.7019608, 0, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_elvfr"]
+texture = ExtResource("10_elvfr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4s0ev"]
+texture = ExtResource("10_sl0w2")
+
 [node name="Battle" type="Node2D" unique_id=387018158]
 script = ExtResource("1_6t8i5")
+
+[node name="Panel" type="Panel" parent="." unique_id=502224099]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pihy1")
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=360654667 node_paths=PackedStringArray("player")]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
@@ -39,7 +65,6 @@ player = NodePath("Player")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("hand_cards", "grid") instance=ExtResource("4_6t8i5")]
 hand_cards = NodePath("../../CanvasLayer/ui_cartas")
-initial_pos = null
 grid = NodePath("..")
 
 [node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
@@ -66,11 +91,12 @@ player = NodePath("../../Grid/Player")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -282.0
-offset_top = 6.0
-offset_right = -9.0
-offset_bottom = 194.0
+offset_left = -279.0
+offset_top = 26.0
+offset_right = -6.0
+offset_bottom = 214.0
 grow_horizontal = 0
+scale = Vector2(0.92, 1)
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=1902253333]
 custom_minimum_size = Vector2(0, 60)
@@ -97,7 +123,15 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=1891080763]
 layout_mode = 2
 
-[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1387218239]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=154206869]
+layout_mode = 2
+
+[node name="MovesIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=350647332]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_elvfr")
+
+[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1387218239]
 layout_mode = 2
 script = ExtResource("9_lcjiy")
 
@@ -107,11 +141,19 @@ visibility_layer = 0
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1698429586]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1345920658]
+layout_mode = 2
+
+[node name="ManaIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=729154553]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4s0ev")
+
+[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1698429586]
 layout_mode = 2
 script = ExtResource("10_b1i6x")
 
 [connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBar" method="_on_player_damaged"]
-[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/Mana" method="_on_player_mana_spent"]
-[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/Moves" method="_on_player_moved"]
+[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2/Mana" method="_on_player_mana_spent"]
+[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer/Moves" method="_on_player_moved"]
 [connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]
