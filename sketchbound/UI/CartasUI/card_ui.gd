@@ -23,4 +23,8 @@ func set_pos(pos: int) -> void:
 	pos_hand = pos
 
 func _on_pressed() -> void:
+	if button_pressed:
+		print("Apertou")
+	else:
+		print("Desapertou")
 	card_selected.emit(self)

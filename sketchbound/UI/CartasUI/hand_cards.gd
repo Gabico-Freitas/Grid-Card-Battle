@@ -18,16 +18,20 @@ func _ready() -> void:
 
 func _on_card_selected(card_ui: Card_Ui): #Falta fazer
 	var event = InputEventKey.new()
-
-	match card_ui.card_data.id:
-		1: event.keycode = KEY_1
-		2: event.keycode = KEY_2
-		3: event.keycode = KEY_3
-		4: event.keycode = KEY_4
-		5: event.keycode = KEY_5
 	event.pressed = true
+	if card_ui.button_pressed:
+		match card_ui.card_data.id:
+			1: event.keycode = KEY_1
+			2: event.keycode = KEY_2
+			3: event.keycode = KEY_3
+			4: event.keycode = KEY_4
+			5: event.keycode = KEY_5
+		player.selected_card = card_ui.card_data
+	else:
+		event.keycode = KEY_ESCAPE
+		player.selected_card = null
 	Input.parse_input_event(event)
-	player.selected_card = card_ui.card_data
+	
 
 func update_hand(player_hand : Array[Card]):
 	for i in range(cards.size()):

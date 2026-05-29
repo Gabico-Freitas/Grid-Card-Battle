@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://23kwkbucxnuu"]
 
 [ext_resource type="Script" uid="uid://blk5iyj7tnsp1" path="res://scripts/battle.gd" id="1_6t8i5"]
-[ext_resource type="Texture2D" uid="uid://crsqp6qd2ojy3" path="res://UI/Icons/Mesas/MesaPlasticoV2.png" id="2_4s0ev"]
+[ext_resource type="Texture2D" uid="uid://bwiktmxfby0kv" path="res://UI/Icons/Mesas/MesaMadeiraV2.png" id="2_4s0ev"]
 [ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="2_6t8i5"]
 [ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="3_0npn6"]
 [ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
@@ -11,9 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
 [ext_resource type="Script" uid="uid://cjrtfjt0gg42x" path="res://UI/moves.gd" id="9_lcjiy"]
 [ext_resource type="Script" uid="uid://b1av6pv2qsxof" path="res://UI/mana.gd" id="10_b1i6x"]
-[ext_resource type="Texture2D" uid="uid://bt46x6x38v61m" path="res://UI/Icons/MovimentoColorido.png" id="10_elvfr"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
-[ext_resource type="Texture2D" uid="uid://cpnyykmgyf6hc" path="res://UI/Icons/ManaColorido.png" id="10_sl0w2"]
+[ext_resource type="Texture2D" uid="uid://bnw28i4p4gobj" path="res://UI/Icons/MovimentoColorido_BG.png" id="11_4s0ev"]
+[ext_resource type="Script" uid="uid://b1yipgxb0avhl" path="res://scripts/player_texture_healthbar.gd" id="11_slotg"]
+[ext_resource type="Texture2D" uid="uid://b5wl0xj3dfmbn" path="res://UI/Icons/ManaColorido_BG.png" id="13_pihy1"]
+[ext_resource type="Texture2D" uid="uid://dem7y6pbfjrw3" path="res://UI/Icons/BarradeVida.png" id="15_pihy1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
 texture = ExtResource("2_4s0ev")
@@ -35,10 +37,10 @@ bg_color = Color(0.8862745, 0.023529412, 0, 1)
 bg_color = Color(0.0627451, 0.7019608, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_elvfr"]
-texture = ExtResource("10_elvfr")
+texture = ExtResource("11_4s0ev")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4s0ev"]
-texture = ExtResource("10_sl0w2")
+texture = ExtResource("13_pihy1")
 
 [node name="Battle" type="Node2D" unique_id=387018158]
 script = ExtResource("1_6t8i5")
@@ -94,11 +96,27 @@ anchor_right = 1.0
 offset_left = -279.0
 offset_top = 26.0
 offset_right = -6.0
-offset_bottom = 214.0
+offset_bottom = 430.0
 grow_horizontal = 0
 scale = Vector2(0.92, 1)
 
+[node name="PlayerHealthBarText" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=2021919044]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("15_pihy1")
+script = ExtResource("11_slotg")
+
+[node name="PlayerHealth" type="Label" parent="CanvasLayer/VBoxContainer2/PlayerHealthBarText" unique_id=2076238132]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 256.0
+offset_bottom = 58.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=1902253333]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_dw4jg")
@@ -107,6 +125,7 @@ show_percentage = false
 script = ExtResource("6_dw4jg")
 
 [node name="PlayerHealth" type="Label" parent="CanvasLayer/VBoxContainer2/PlayerHealthBar" unique_id=1461018509]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_right = 256.0
@@ -121,18 +140,20 @@ custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=1891080763]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=154206869]
+[node name="MovesBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=154206869]
 layout_mode = 2
 
-[node name="MovesIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=350647332]
-custom_minimum_size = Vector2(40, 20)
+[node name="MovesIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox" unique_id=350647332]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_elvfr")
 
-[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1387218239]
+[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox" unique_id=1387218239]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 script = ExtResource("9_lcjiy")
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=427383156]
@@ -141,19 +162,21 @@ visibility_layer = 0
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1345920658]
+[node name="ManaBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1345920658]
 layout_mode = 2
 
-[node name="ManaIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=729154553]
-custom_minimum_size = Vector2(40, 20)
+[node name="ManaIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox" unique_id=729154553]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_4s0ev")
 
-[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1698429586]
+[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox" unique_id=1698429586]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 script = ExtResource("10_b1i6x")
 
 [connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBar" method="_on_player_damaged"]
-[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer2/Mana" method="_on_player_mana_spent"]
-[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/HBoxContainer/Moves" method="_on_player_moved"]
+[connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBarText" method="_on_player_damaged"]
+[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox/Mana" method="_on_player_mana_spent"]
+[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox/Moves" method="_on_player_moved"]
 [connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]
