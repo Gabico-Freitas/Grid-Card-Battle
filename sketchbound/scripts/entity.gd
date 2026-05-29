@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 
 func take_damage(dmg:int) -> void:
 	hp -= dmg
-	if is_dead(): 
+	if is_dead() and self is Enemy:  
 		grid.erase_entity(self)
 		self.hide()
 		process_mode = Node.PROCESS_MODE_DISABLED
