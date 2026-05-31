@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://n0y7n1bb56ge"]
-
-[ext_resource type="Texture2D" uid="uid://bobm4ecmc14tb" path="res://assets/inimigos/Sniper/Sniper_Idle_2.png" id="1_ak0t8"]
-
-[node name="RangedEnemy" type="Node2D" unique_id=617992537]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1420156499]
-texture = ExtResource("1_ak0t8")

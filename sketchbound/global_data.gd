@@ -4,7 +4,7 @@ var deck : Array[Card] = []
 var _initial_deck = {
 	PunchCard: 6,
 	SpearCard: 1,
-	ArrowCard: 1,
+	ArrowCard: 2,
 	SlashCard: 2,
 	HammerCard: 1
 }

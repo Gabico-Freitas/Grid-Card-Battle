@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cjv8tcj5rl81w" path="res://UI/CartasUI/card_ui.gd" id="1_dcy8i"]
 [ext_resource type="Script" uid="uid://cqtwdw30rlujs" path="res://UI/CartasUI/hand_cards.gd" id="1_psyu5"]
 [ext_resource type="Script" uid="uid://dryg1u2akk33r" path="res://UI/CartasUI/card_animations.gd" id="2_7xfof"]
+[ext_resource type="Texture2D" uid="uid://cniefx8he80mm" path="res://UI/Icons/Pilha_de_compra.png" id="2_ea3qk"]
+[ext_resource type="Texture2D" uid="uid://bojd7lxapxijg" path="res://UI/Icons/Lixeira.png" id="5_yball"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_546sr"]
 
@@ -43,21 +45,48 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_psyu5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1642404113]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2013139353]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = -0.194
+anchor_right = 1.121
 anchor_bottom = 1.0
-offset_left = -422.0
-offset_top = -201.0
-offset_right = 396.0
-offset_bottom = -2.0
+offset_left = -0.3840027
+offset_top = 1.0
+offset_right = 47.455933
+offset_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+scale = Vector2(0.96000093, 1)
 
-[node name="Button1" type="Button" parent="HBoxContainer" unique_id=463781986]
+[node name="Deck" type="TextureButton" parent="HBoxContainer" unique_id=1178570768]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+disabled = true
+texture_disabled = ExtResource("2_ea3qk")
+stretch_mode = 0
+
+[node name="DeckLabel" type="Label" parent="HBoxContainer/Deck" unique_id=232040394]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.749954
+offset_top = -30.0
+offset_right = 43.749954
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="Hand" type="HBoxContainer" parent="HBoxContainer" unique_id=1642404113]
+layout_mode = 2
+
+[node name="Button1" type="Button" parent="HBoxContainer/Hand" unique_id=463781986]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
@@ -69,11 +98,11 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_dcy8i")
 
-[node name="CardEffects" type="Node" parent="HBoxContainer/Button1" unique_id=1449398316]
+[node name="CardEffects" type="Node" parent="HBoxContainer/Hand/Button1" unique_id=1449398316]
 script = ExtResource("2_7xfof")
 metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
-[node name="Button2" type="Button" parent="HBoxContainer" unique_id=1632091356]
+[node name="Button2" type="Button" parent="HBoxContainer/Hand" unique_id=1632091356]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
@@ -85,11 +114,11 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_dcy8i")
 
-[node name="CardEffects" type="Node" parent="HBoxContainer/Button2" unique_id=482317084]
+[node name="CardEffects" type="Node" parent="HBoxContainer/Hand/Button2" unique_id=482317084]
 script = ExtResource("2_7xfof")
 metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
-[node name="Button3" type="Button" parent="HBoxContainer" unique_id=536671151]
+[node name="Button3" type="Button" parent="HBoxContainer/Hand" unique_id=536671151]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
@@ -101,11 +130,11 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_dcy8i")
 
-[node name="CardEffects" type="Node" parent="HBoxContainer/Button3" unique_id=291249812]
+[node name="CardEffects" type="Node" parent="HBoxContainer/Hand/Button3" unique_id=291249812]
 script = ExtResource("2_7xfof")
 metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
-[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1253892283]
+[node name="Button4" type="Button" parent="HBoxContainer/Hand" unique_id=1253892283]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
@@ -117,11 +146,11 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_dcy8i")
 
-[node name="CardEffects" type="Node" parent="HBoxContainer/Button4" unique_id=1832537105]
+[node name="CardEffects" type="Node" parent="HBoxContainer/Hand/Button4" unique_id=1832537105]
 script = ExtResource("2_7xfof")
 metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
-[node name="Button5" type="Button" parent="HBoxContainer" unique_id=1726384659]
+[node name="Button5" type="Button" parent="HBoxContainer/Hand" unique_id=1726384659]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_546sr")
@@ -133,12 +162,41 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_dcy8i")
 
-[node name="CardEffects" type="Node" parent="HBoxContainer/Button5" unique_id=994003781]
+[node name="CardEffects" type="Node" parent="HBoxContainer/Hand/Button5" unique_id=994003781]
 script = ExtResource("2_7xfof")
 metadata/_custom_type_script = "uid://dryg1u2akk33r"
 
-[connection signal="pressed" from="HBoxContainer/Button1" to="HBoxContainer/Button1" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button2" to="HBoxContainer/Button2" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button3" to="HBoxContainer/Button3" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button4" to="HBoxContainer/Button4" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button5" to="HBoxContainer/Button5" method="_on_pressed"]
+[node name="BlankSpace" type="Control" parent="HBoxContainer" unique_id=1031444078]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Discard" type="TextureButton" parent="HBoxContainer" unique_id=1736489898]
+custom_minimum_size = Vector2(160, 0)
+layout_direction = 2
+layout_mode = 2
+disabled = true
+texture_disabled = ExtResource("5_yball")
+stretch_mode = 0
+
+[node name="DiscardLabel" type="Label" parent="HBoxContainer/Discard" unique_id=1823468505]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.917732
+offset_top = -43.0
+offset_right = 47.916534
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/Hand/Button1" to="HBoxContainer/Hand/Button1" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hand/Button2" to="HBoxContainer/Hand/Button2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hand/Button3" to="HBoxContainer/Hand/Button3" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hand/Button4" to="HBoxContainer/Hand/Button4" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hand/Button5" to="HBoxContainer/Hand/Button5" method="_on_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://u4v3dwilp02u"]
+
+[node name="controles_screen" type="Control" unique_id=1953633325]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -7,15 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
-[ext_resource type="Script" uid="uid://dtt5myu7o5qo3" path="res://scripts/player_health_bar.gd" id="6_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
-[ext_resource type="Script" uid="uid://cjrtfjt0gg42x" path="res://UI/moves.gd" id="9_lcjiy"]
-[ext_resource type="Script" uid="uid://b1av6pv2qsxof" path="res://UI/mana.gd" id="10_b1i6x"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
 [ext_resource type="Texture2D" uid="uid://bnw28i4p4gobj" path="res://UI/Icons/MovimentoColorido_BG.png" id="11_4s0ev"]
 [ext_resource type="Script" uid="uid://b1yipgxb0avhl" path="res://scripts/player_texture_healthbar.gd" id="11_slotg"]
+[ext_resource type="Script" uid="uid://bix2cas80cugt" path="res://UI/moves_flow.gd" id="12_ix8ov"]
 [ext_resource type="Texture2D" uid="uid://b5wl0xj3dfmbn" path="res://UI/Icons/ManaColorido_BG.png" id="13_pihy1"]
 [ext_resource type="Texture2D" uid="uid://dem7y6pbfjrw3" path="res://UI/Icons/BarradeVida.png" id="15_pihy1"]
+[ext_resource type="Script" uid="uid://j831xacrxwab" path="res://UI/mana_flow.gd" id="16_slotg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
 texture = ExtResource("2_4s0ev")
@@ -30,16 +29,10 @@ texture_region_size = Vector2i(108, 108)
 tile_size = Vector2i(108, 108)
 sources/0 = SubResource("TileSetAtlasSource_dw4jg")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw4jg"]
-bg_color = Color(0.8862745, 0.023529412, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0npn6"]
-bg_color = Color(0.0627451, 0.7019608, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_elvfr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slotg"]
 texture = ExtResource("11_4s0ev")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4s0ev"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix8ov"]
 texture = ExtResource("13_pihy1")
 
 [node name="Battle" type="Node2D" unique_id=387018158]
@@ -84,30 +77,31 @@ grid = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1954383597]
 
 [node name="ui_cartas" parent="CanvasLayer" unique_id=464823249 node_paths=PackedStringArray("player") instance=ExtResource("10_ol6im")]
-offset_left = 161.0
-offset_top = -207.0
-offset_right = -45.0
+offset_left = 180.0
+offset_top = -212.0
+offset_right = -107.0
+offset_bottom = -18.0
 player = NodePath("../../Grid/Player")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=855558195]
+[node name="StatusBox" type="VBoxContainer" parent="CanvasLayer" unique_id=1318836171]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -279.0
 offset_top = 26.0
 offset_right = -6.0
-offset_bottom = 430.0
+offset_bottom = 297.0
 grow_horizontal = 0
 scale = Vector2(0.92, 1)
 
-[node name="PlayerHealthBarText" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=2021919044]
+[node name="PlayerHealthBarText" type="TextureProgressBar" parent="CanvasLayer/StatusBox" unique_id=847182891]
 custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 nine_patch_stretch = true
 texture_progress = ExtResource("15_pihy1")
 script = ExtResource("11_slotg")
 
-[node name="PlayerHealth" type="Label" parent="CanvasLayer/VBoxContainer2/PlayerHealthBarText" unique_id=2076238132]
+[node name="PlayerHealth" type="Label" parent="CanvasLayer/StatusBox/PlayerHealthBarText" unique_id=354626800]
 layout_mode = 0
 offset_left = 25.0
 offset_right = 256.0
@@ -115,68 +109,41 @@ offset_bottom = 58.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer2" unique_id=1902253333]
-visible = false
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_dw4jg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0npn6")
-show_percentage = false
-script = ExtResource("6_dw4jg")
-
-[node name="PlayerHealth" type="Label" parent="CanvasLayer/VBoxContainer2/PlayerHealthBar" unique_id=1461018509]
-visible = false
-layout_mode = 0
-offset_left = 25.0
-offset_right = 256.0
-offset_bottom = 58.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer2" unique_id=459230156]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/StatusBox" unique_id=845908834]
 light_mask = 0
 visibility_layer = 0
 custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=1891080763]
-custom_minimum_size = Vector2(0, 200)
+[node name="MoveFlowContainer" type="HFlowContainer" parent="CanvasLayer/StatusBox" unique_id=1586121308 node_paths=PackedStringArray("player")]
 layout_mode = 2
+script = ExtResource("12_ix8ov")
+player = NodePath("../../../Grid/Player")
 
-[node name="MovesBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=154206869]
-layout_mode = 2
-
-[node name="MovesIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox" unique_id=350647332]
+[node name="MovesIcon" type="Panel" parent="CanvasLayer/StatusBox/MoveFlowContainer" unique_id=492813399]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_elvfr")
+theme_override_styles/panel = SubResource("StyleBoxTexture_slotg")
 
-[node name="Moves" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox" unique_id=1387218239]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-script = ExtResource("9_lcjiy")
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=427383156]
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/StatusBox" unique_id=543151797]
 light_mask = 0
 visibility_layer = 0
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 
-[node name="ManaBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2/VBoxContainer" unique_id=1345920658]
+[node name="ManaFlowContainer" type="HFlowContainer" parent="CanvasLayer/StatusBox" unique_id=1755933176 node_paths=PackedStringArray("player")]
 layout_mode = 2
+theme_override_constants/h_separation = 16
+script = ExtResource("16_slotg")
+player = NodePath("../../../Grid/Player")
 
-[node name="ManaIcon" type="Panel" parent="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox" unique_id=729154553]
+[node name="ManaIcon" type="Panel" parent="CanvasLayer/StatusBox/ManaFlowContainer" unique_id=1146898650]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4s0ev")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ix8ov")
 
-[node name="Mana" type="Label" parent="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox" unique_id=1698429586]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-script = ExtResource("10_b1i6x")
-
-[connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBar" method="_on_player_damaged"]
-[connection signal="damaged" from="Grid/Player" to="CanvasLayer/VBoxContainer2/PlayerHealthBarText" method="_on_player_damaged"]
-[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/ManaBox/Mana" method="_on_player_mana_spent"]
-[connection signal="moved" from="Grid/Player" to="CanvasLayer/VBoxContainer2/VBoxContainer/MovesBox/Moves" method="_on_player_moved"]
+[connection signal="damaged" from="Grid/Player" to="CanvasLayer/StatusBox/PlayerHealthBarText" method="_on_player_damaged"]
+[connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/StatusBox/ManaFlowContainer" method="_on_player_mana_spent"]
+[connection signal="moved" from="Grid/Player" to="CanvasLayer/StatusBox/MoveFlowContainer" method="_on_player_moved"]
 [connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]
+[connection signal="turn_ended" from="Grid/Player" to="CanvasLayer/ui_cartas" method="_on_player_turn_ended"]

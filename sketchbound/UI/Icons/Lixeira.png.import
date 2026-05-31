@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://suqt1jdew35j"
-path="res://.godot/imported/grid_tile.png-6bdc0ae6a2a77a56ef79c5cbe37d624f.ctex"
+uid="uid://bojd7lxapxijg"
+path="res://.godot/imported/Lixeira.png-dc330cc99dc0319f8c6727981dbe7fe0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grid_tile.png"
-dest_files=["res://.godot/imported/grid_tile.png-6bdc0ae6a2a77a56ef79c5cbe37d624f.ctex"]
+source_file="res://UI/Icons/Lixeira.png"
+dest_files=["res://.godot/imported/Lixeira.png-dc330cc99dc0319f8c6727981dbe7fe0.ctex"]
 
 [params]
 

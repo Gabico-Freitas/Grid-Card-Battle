@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bogogd67ucam3"
-path="res://.godot/imported/Construtor_Atk_2.png-6866f8178033b91ad5061564d5af64d8.ctex"
+uid="uid://cniefx8he80mm"
+path="res://.godot/imported/Pilha_de_compra.png-ea635f3a81e7ea28bfebd792d10b2031.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inimigos/Construtor/Construtor_Atk_2.png"
-dest_files=["res://.godot/imported/Construtor_Atk_2.png-6866f8178033b91ad5061564d5af64d8.ctex"]
+source_file="res://UI/Icons/Pilha_de_compra.png"
+dest_files=["res://.godot/imported/Pilha_de_compra.png-ea635f3a81e7ea28bfebd792d10b2031.ctex"]
 
 [params]
 
