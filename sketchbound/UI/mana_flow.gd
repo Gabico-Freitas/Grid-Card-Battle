@@ -2,7 +2,7 @@ extends HFlowContainer
 @export var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in range(player.MAX_MANA):
+	for i in range(player.MAX_MANA-1):
 		var icon = $ManaIcon.duplicate()
 		add_child(icon)
 
@@ -17,4 +17,4 @@ func _on_player_mana_spent(curr_mana: int, max_mana: int) -> void:
 		if i < curr_mana:
 			icon.modulate.a = 1.0
 		else:
-			icon.modulate.a = 0.0
+			icon.modulate.a = 0.4

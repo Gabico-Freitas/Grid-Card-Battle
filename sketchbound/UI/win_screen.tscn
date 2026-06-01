@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://UI/Grid Card Battle.png" id="1_w024j"]
 [ext_resource type="Script" uid="uid://dth4x2llsu6o4" path="res://UI/menu_button.gd" id="2_qpj51"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_oqmmh"]
+[ext_resource type="Script" uid="uid://cdtkj6dclb8ye" path="res://UI/retry_button.gd" id="4_qpj51"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwi6r"]
 texture = ExtResource("1_w024j")
@@ -122,9 +123,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mlrl6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xwfbv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8qo44")
 text = "JOGAR NOVAMENTE"
+script = ExtResource("4_qpj51")
 
 [node name="ButtonEffects" type="Node" parent="HFlowContainer/RetryButton" unique_id=1201211545]
 script = ExtResource("3_oqmmh")
 metadata/_custom_type_script = "uid://dinccf3l0huxg"
 
 [connection signal="pressed" from="HFlowContainer/MenuButton" to="HFlowContainer/MenuButton" method="_on_pressed"]
+[connection signal="pressed" from="HFlowContainer/RetryButton" to="HFlowContainer/RetryButton" method="_on_pressed"]

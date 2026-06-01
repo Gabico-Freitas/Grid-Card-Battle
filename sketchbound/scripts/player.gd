@@ -26,7 +26,7 @@ func _ready() -> void:
 	hp = 36
 	moved.emit(move_points,MAX_MOVE_POINTS)
 	mana_spent.emit(mana, MAX_MANA)
-	draw_pile = GlobalData.deck
+	draw_pile = GlobalData.deck.duplicate()
 	draw_pile.shuffle()
 	
 	$seta_dir.visible = true
