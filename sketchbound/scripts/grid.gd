@@ -31,10 +31,11 @@ func get_entity_world_coordinates(e:Entity) -> Vector2:
 	var pos = get_entity_pos(e)
 	return map_to_local(pos)
 
-func set_entity_pos(e:Entity, new_pos:Vector2i) -> void:
-	if(cell_content.has(new_pos) or !_cell_exists(new_pos)): return
+func set_entity_pos(e:Entity, new_pos:Vector2i) -> bool:
+	if(cell_content.has(new_pos) or !_cell_exists(new_pos)): return false
 	cell_content.erase(get_entity_pos(e))
 	cell_content[new_pos] = e
+	return true
 
 func erase_entity(e:Entity) -> void:
 	cell_content.erase(get_entity_pos(e))
@@ -42,41 +43,22 @@ func erase_entity(e:Entity) -> void:
 func move_up(e:Entity) -> bool:
 	var cell = get_entity_pos(e)
 	var up_cell = get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_TOP_SIDE)
-	if(_cell_exists(up_cell) and !cell_content.has(up_cell)):
-		set_entity_pos(e, up_cell)
-		return true
-	else:
-		return false
+	return set_entity_pos(e, up_cell)
 
 func move_right(e:Entity) -> bool:
 	var cell = get_entity_pos(e)
 	var right_cell = get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-	if(_cell_exists(right_cell) and !cell_content.has(right_cell)):
-		set_entity_pos(e, right_cell)
-		return true
-	else:
-		return false
+	return set_entity_pos(e, right_cell)
 
 func move_down(e:Entity) -> bool:
 	var cell = get_entity_pos(e)
 	var down_cell = get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
-	if(_cell_exists(down_cell) and !cell_content.has(down_cell)):
-		set_entity_pos(e, down_cell)
-		return true
-	else:
-		return false
+	return set_entity_pos(e, down_cell)
 
 func move_left(e:Entity) -> bool:
 	var cell = get_entity_pos(e)
 	var left_cell = get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_LEFT_SIDE)
-	if(_cell_exists(left_cell) and !cell_content.has(left_cell)):
-		set_entity_pos(e, left_cell)
-		return true
-	else:
-		return false
-
-func highlight_cell(pos:Vector2i) -> void:
-	set_cell(pos, 0, Vector2i(1, 0))
+	return set_entity_pos(e, left_cell)
 
 func path_to_player(e:Enemy) -> Array[Vector2i]:
 		astar.fill_solid_region(get_used_rect(), false)
@@ -89,6 +71,11 @@ func path_to_player(e:Enemy) -> Array[Vector2i]:
 		path.pop_front()
 		path.pop_back()
 		return path
+
+func highlight_cell(pos:Vector2i, on:bool) -> void:
+	if(!_cell_exists(pos)): return
+	if(on): set_cell(pos, 0, Vector2i(1, 0))
+	else: set_cell(pos, 0, Vector2i(0, 0))
 
 func _cell_exists(cell:Vector2i) -> bool:
 	return get_cell_source_id(cell) != -1

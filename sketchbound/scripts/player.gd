@@ -15,6 +15,7 @@ var aiming = false
 
 var selected_card : Card = null
 var aim_direction := Direction.RIGHT
+var highlighted_cells:= []
 
 signal turn_ended
 signal moved(curr_moves: int, max_moves:int)
@@ -94,6 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _handle_input_no_selected_card(event: InputEvent) -> void:
 	if (event.is_action_pressed("EndPlayerTurn")):
 		my_turn = false
+		_update_highlight_card_aof()
 		emit_signal("turn_ended")
 		return
 	
@@ -122,32 +124,42 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("SelectCard4")): selected_card_number = 4
 	if(event.is_action_pressed("SelectCard5")): selected_card_number = 5
 	var card
+	print(selected_card_number)
 	if(selected_card_number > 0 and selected_card_number <= hand.size()): card = hand.get(selected_card_number - 1)
-	if card != null: selected_card = card
+	if card != null: 
+		print("SELECTED")
+		selected_card = card
+		_update_highlight_card_aof()
 
 func _handle_input_selected_card(event: InputEvent) -> void:
-	if(event.is_action_pressed("UnselectCard")): selected_card = null
+	if(event.is_action_pressed("UnselectCard")): 
+		selected_card = null
+		_update_highlight_card_aof()
 	
 	if(event.is_action_pressed("AimUp")): 
 		aim_direction = Direction.UP
+		_update_highlight_card_aof()
 		$seta_dir.visible = false
 		$seta_baixo.visible = false
 		$seta_cima.visible = true
 		$seta_esq.visible = false
 	if(event.is_action_pressed("AimRight")):
 		aim_direction = Direction.RIGHT
+		_update_highlight_card_aof()
 		$seta_dir.visible = true
 		$seta_baixo.visible = false
 		$seta_cima.visible = false
 		$seta_esq.visible = false
 	if(event.is_action_pressed("AimDown")):
 		aim_direction = Direction.DOWN
+		_update_highlight_card_aof()
 		$seta_dir.visible = false
 		$seta_baixo.visible = true
 		$seta_cima.visible = false
 		$seta_esq.visible = false
 	if(event.is_action_pressed("AimLeft")):
 		aim_direction = Direction.LEFT
+		_update_highlight_card_aof()
 		$seta_dir.visible = false
 		$seta_baixo.visible = false
 		$seta_cima.visible = false
@@ -156,6 +168,26 @@ func _handle_input_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("UseCard")): 
 		_use_card(selected_card, aim_direction)
 		selected_card = null
+		_update_highlight_card_aof()
+
+func _update_highlight_card_aof() -> void:
+	for cell in highlighted_cells:
+		grid.highlight_cell(cell, false)
+	highlighted_cells.clear()
+	if selected_card == null: return
+	
+	var aof
+	match aim_direction:
+		Direction.UP: aof = selected_card.get_aof_up() 
+		Direction.RIGHT: aof = selected_card.get_aof_right()
+		Direction.DOWN: aof = selected_card.get_aof_down()
+		Direction.LEFT: aof = selected_card.get_aof_left()
+	
+	var my_pos = grid.get_entity_pos(self)
+	for tile in aof:
+		var target_cell = my_pos + tile
+		grid.highlight_cell(target_cell, true)
+		highlighted_cells.append(target_cell)
 
 enum Direction {
 	UP,
