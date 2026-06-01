@@ -18,19 +18,12 @@ func _ready() -> void:
 
 
 func _on_card_selected(card_ui: Card_Ui): #Falta fazer
-	var event = InputEventKey.new()
-	event.pressed = true
 	if card_ui.button_pressed:
-		print(card_ui.pos_hand)
-		match card_ui.pos_hand + 1:
-			1: event.physical_keycode = KEY_1
-			2: event.physical_keycode = KEY_2
-			3: event.physical_keycode = KEY_3
-			4: event.physical_keycode = KEY_4
-			5: event.physical_keycode = KEY_5
+		player.selected_card = card_ui.card_data
+		player._update_highlight_card_aof()
 	else:
-		event.physical_keycode = KEY_ESCAPE
-	Input.parse_input_event(event)
+		player.selected_card = null
+		player._update_highlight_card_aof()
 
 func update_hand(player_hand : Array[Card]):
 	deck_label()

@@ -124,10 +124,8 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("SelectCard4")): selected_card_number = 4
 	if(event.is_action_pressed("SelectCard5")): selected_card_number = 5
 	var card
-	print(selected_card_number)
 	if(selected_card_number > 0 and selected_card_number <= hand.size()): card = hand.get(selected_card_number - 1)
 	if card != null: 
-		print("SELECTED")
 		selected_card = card
 		_update_highlight_card_aof()
 
