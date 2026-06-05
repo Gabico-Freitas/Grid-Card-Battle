@@ -8,8 +8,16 @@ func _ready() -> void:
 	health_bar.set_up(hp)
 
 func do_turn() -> void:
-	move_points = 0
+	move_points = 1
+	var path = grid.path_to_player(self)
+	
 	if _try_attack(): return
+	while(move_points > 0):
+		if path.is_empty(): return
+		var next_cell = path.pop_front()
+		grid.set_entity_pos(self, next_cell)
+		move_points -= 1
+		if _try_attack(): return
 
 # Pega a posição do player, verifica se ele está ao redor do esmagador, 
 # somando com um vetor para cada posição possivel
@@ -19,7 +27,7 @@ func _try_attack() -> bool:
 			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
-				entity.take_damage(3)
+				entity.take_damage(6)
 				return true
 	return false
 

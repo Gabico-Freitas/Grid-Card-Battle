@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cjd7m22tuvfs3"]
 
-[ext_resource type="Texture2D" uid="uid://c6n4e7qteqgt2" path="res://UI/Grid Card Battle.png" id="1_tuusc"]
+[ext_resource type="Texture2D" uid="uid://4qt42fvhw8ql" path="res://UI/Backgrounds/wallpaper.png" id="1_2ygxs"]
 [ext_resource type="Script" uid="uid://nee5staqw5ds" path="res://UI/start_button.gd" id="2_2ygxs"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="2_iefc8"]
 [ext_resource type="Script" uid="uid://damy2anfd6mir" path="res://UI/exit_button.gd" id="3_dvy0b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iefc8"]
-texture = ExtResource("1_tuusc")
+texture = ExtResource("1_2ygxs")
 modulate_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylmtb"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk17pkxhh8gr"]
 
-[ext_resource type="Script" uid="uid://d8u6wfursh3n" path="res://scripts/esmagador.gd" id="1_4mexy"]
+[ext_resource type="Script" uid="uid://d8u6wfursh3n" path="res://scripts/smasher_enemy.gd" id="1_4mexy"]
 [ext_resource type="Texture2D" uid="uid://bui1lhyi4row5" path="res://assets/inimigos/Construtor/Construtor_Idle_2.png" id="2_gaw2j"]
 [ext_resource type="Script" uid="uid://bcrvk5x4mbgii" path="res://scripts/health_bar.gd" id="3_vadps"]
 

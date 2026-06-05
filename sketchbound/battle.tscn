@@ -60,18 +60,23 @@ player = NodePath("Player")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("hand_cards", "grid") instance=ExtResource("4_6t8i5")]
 hand_cards = NodePath("../../CanvasLayer/ui_cartas")
+initial_pos = Vector2i(3, 2)
 grid = NodePath("..")
 
 [node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
-initial_pos = Vector2i(4, 3)
+initial_pos = Vector2i(7, 3)
 grid = NodePath("..")
 
-[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
-initial_pos = Vector2i(5, 1)
+[node name="Melee2" parent="Grid" unique_id=1525192895 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
+initial_pos = Vector2i(5, 0)
 grid = NodePath("..")
 
 [node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("7_mhv3b")]
-initial_pos = Vector2i(6, 1)
+initial_pos = Vector2i(1, 0)
+grid = NodePath("..")
+
+[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
+initial_pos = Vector2i(2, 2)
 grid = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1954383597]
