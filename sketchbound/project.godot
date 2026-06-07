@@ -22,6 +22,10 @@ GlobalData="*uid://mrdqw2uhnktm"
 
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="uid://bo1cig0mc8dcd"
+
 [input]
 
 Up={

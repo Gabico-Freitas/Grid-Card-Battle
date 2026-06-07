@@ -89,16 +89,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = 41.0
-offset_right = 248.0
-offset_bottom = 191.0
+offset_left = -264.0
+offset_top = 35.0
+offset_right = 223.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 138
 
 [node name="MenuButton" type="Button" parent="HFlowContainer" unique_id=289532042]
-custom_minimum_size = Vector2(138, 76.5)
+custom_minimum_size = Vector2(172, 76.5)
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
@@ -106,15 +106,34 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_k2vha")
-text = "MENU"
 script = ExtResource("2_ccer4")
 
 [node name="ButtonEffects" type="Node" parent="HFlowContainer/MenuButton" unique_id=803107204]
 script = ExtResource("1_y26ei")
 metadata/_custom_type_script = "uid://dinccf3l0huxg"
 
+[node name="menu" type="RichTextLabel" parent="HFlowContainer/MenuButton" unique_id=35682613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -29.75
+offset_right = 56.0
+offset_bottom = 29.75
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 34
+text = "MENU"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RetryButton" type="Button" parent="HFlowContainer" unique_id=1766537706]
-custom_minimum_size = Vector2(163, 0)
+custom_minimum_size = Vector2(177, 0)
 layout_direction = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
@@ -122,12 +141,32 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yxx3c")
-text = "TENTAR NOVAMENTE"
 script = ExtResource("4_phit2")
 
 [node name="ButtonEffects" type="Node" parent="HFlowContainer/RetryButton" unique_id=1679678329]
 script = ExtResource("1_y26ei")
 metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="tentar" type="RichTextLabel" parent="HFlowContainer/RetryButton" unique_id=629984629]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -30.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 25
+text = "TENTAR NOVAMENTE"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="HFlowContainer/MenuButton" to="HFlowContainer/MenuButton" method="_on_pressed"]
 [connection signal="pressed" from="HFlowContainer/RetryButton" to="HFlowContainer/RetryButton" method="_on_pressed"]

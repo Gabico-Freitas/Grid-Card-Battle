@@ -49,7 +49,11 @@ func update_hand(player_hand : Array[Card]):
 			discard_label()
 
 func discard_label() -> void:
-	$HBoxContainer/Discard/DiscardLabel.text = str(player.discard_pile.size())
+	if player.discard_pile.size() ==0:
+		$HBoxContainer/Discard/DiscardLabel.text = ""
+	else:
+		$HBoxContainer/Discard/DiscardLabel.text = str(player.discard_pile.size())
+
 func deck_label() -> void:
 	$HBoxContainer/Deck/DeckLabel.text = str(player.draw_pile.size())
 	

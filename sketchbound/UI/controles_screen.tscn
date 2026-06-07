@@ -1,5 +1,47 @@
 [gd_scene format=3 uid="uid://u4v3dwilp02u"]
 
+[ext_resource type="Texture2D" uid="uid://dyofksobkjab2" path="res://UI/Backgrounds/tutorial.png" id="1_4ynl6"]
+[ext_resource type="Script" uid="uid://kt0xo3llbmy4" path="res://UI/return_button.gd" id="2_4ynl6"]
+[ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_l1f1s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqq6w"]
+texture = ExtResource("1_4ynl6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnkt3"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0v6o"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 78
+corner_radius_top_right = 78
+corner_radius_bottom_right = 78
+corner_radius_bottom_left = 78
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htsx5"]
+bg_color = Color(0.010877021, 0.47403985, 0.593673, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m2o4"]
+
 [node name="controles_screen" type="Control" unique_id=1953633325]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +49,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1654592240]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eqq6w")
+
+[node name="ReturnButton" type="Button" parent="Panel" unique_id=1595122833 node_paths=PackedStringArray("control_Screen")]
+custom_minimum_size = Vector2(138, 76.5)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -87.5
+offset_right = -12.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hnkt3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n0v6o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_htsx5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5m2o4")
+script = ExtResource("2_4ynl6")
+control_Screen = NodePath("../..")
+
+[node name="ButtonEffects" type="Node" parent="Panel/ReturnButton" unique_id=499921515]
+script = ExtResource("3_l1f1s")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="tentar" type="RichTextLabel" parent="Panel/ReturnButton" unique_id=1883087013]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -25.25
+offset_right = 61.5
+offset_bottom = 25.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 25
+text = "VOLTAR"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/ReturnButton" to="Panel/ReturnButton" method="_on_pressed"]
