@@ -28,11 +28,8 @@ func _ready() -> void:
 	mana_spent.emit(mana, MAX_MANA)
 	draw_pile = GlobalData.deck.duplicate()
 	draw_pile.shuffle()
-	
-	$seta_dir.visible = true
-	$seta_baixo.visible = false
-	$seta_cima.visible = false
-	$seta_esq.visible = false
+	sprite = $AnimatedSprite2D
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func new_turn_refresh() -> void:
 	move_points = MAX_MOVE_POINTS
@@ -83,6 +80,8 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	discard_pile.append(c)
 	if is_instance_valid(hand_cards):
 		hand_cards.update_hand(hand)
+	
+	sprite.play("attack")
 	
 	return true
 
@@ -137,31 +136,15 @@ func _handle_input_selected_card(event: InputEvent) -> void:
 	if(event.is_action_pressed("AimUp")): 
 		aim_direction = Direction.UP
 		_update_highlight_card_aof()
-		$seta_dir.visible = false
-		$seta_baixo.visible = false
-		$seta_cima.visible = true
-		$seta_esq.visible = false
 	if(event.is_action_pressed("AimRight")):
 		aim_direction = Direction.RIGHT
 		_update_highlight_card_aof()
-		$seta_dir.visible = true
-		$seta_baixo.visible = false
-		$seta_cima.visible = false
-		$seta_esq.visible = false
 	if(event.is_action_pressed("AimDown")):
 		aim_direction = Direction.DOWN
 		_update_highlight_card_aof()
-		$seta_dir.visible = false
-		$seta_baixo.visible = true
-		$seta_cima.visible = false
-		$seta_esq.visible = false
 	if(event.is_action_pressed("AimLeft")):
 		aim_direction = Direction.LEFT
 		_update_highlight_card_aof()
-		$seta_dir.visible = false
-		$seta_baixo.visible = false
-		$seta_cima.visible = false
-		$seta_esq.visible = true
 	
 	if(event.is_action_pressed("UseCard")): 
 		_use_card(selected_card, aim_direction)
