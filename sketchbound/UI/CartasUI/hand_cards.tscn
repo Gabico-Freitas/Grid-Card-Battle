@@ -60,6 +60,7 @@ grow_vertical = 2
 scale = Vector2(0.96000093, 1)
 
 [node name="Deck" type="TextureButton" parent="HBoxContainer" unique_id=1178570768]
+visibility_layer = 0
 custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
 disabled = true
@@ -67,6 +68,7 @@ texture_disabled = ExtResource("2_ea3qk")
 stretch_mode = 0
 
 [node name="DeckLabel" type="Label" parent="HBoxContainer/Deck" unique_id=232040394]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,6 +173,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Discard" type="TextureButton" parent="HBoxContainer" unique_id=1736489898]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_direction = 2
 layout_mode = 2
@@ -179,6 +182,7 @@ texture_disabled = ExtResource("5_yball")
 stretch_mode = 0
 
 [node name="DiscardLabel" type="Label" parent="HBoxContainer/Discard" unique_id=1823468505]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

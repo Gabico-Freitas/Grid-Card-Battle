@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
+[ext_resource type="PackedScene" uid="uid://u4v3dwilp02u" path="res://UI/controles_screen.tscn" id="9_slotg"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
 [ext_resource type="Texture2D" uid="uid://bnw28i4p4gobj" path="res://UI/Icons/MovimentoColorido_BG.png" id="11_4s0ev"]
 [ext_resource type="Script" uid="uid://b1yipgxb0avhl" path="res://scripts/player_texture_healthbar.gd" id="11_slotg"]
@@ -28,6 +29,35 @@ texture_region_size = Vector2i(108, 108)
 [sub_resource type="TileSet" id="TileSet_0npn6"]
 tile_size = Vector2i(108, 108)
 sources/0 = SubResource("TileSetAtlasSource_dw4jg")
+
+[sub_resource type="GDScript" id="GDScript_slotg"]
+script/source = "extends Node
+
+@onready var bar : TextureProgressBar = get_parent() 
+
+@export var shake_amount: float = 8.0
+@export var shake_duration: float = 0.2
+@onready var default_position: Vector2 = bar.position
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func shake():
+	var tween = create_tween()
+	var elapsed_time = 0.0
+	while elapsed_time < shake_duration:
+		var random_offset = Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
+		bar.position = default_position + random_offset
+		await get_tree().process_frame
+		elapsed_time += get_process_delta_time()
+	bar.position = default_position
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slotg"]
 texture = ExtResource("11_4s0ev")
@@ -106,6 +136,9 @@ nine_patch_stretch = true
 texture_progress = ExtResource("15_pihy1")
 script = ExtResource("11_slotg")
 
+[node name="HealthBarShake" type="Node" parent="CanvasLayer/StatusBox/PlayerHealthBarText" unique_id=1974765637]
+script = SubResource("GDScript_slotg")
+
 [node name="PlayerHealth" type="Label" parent="CanvasLayer/StatusBox/PlayerHealthBarText" unique_id=354626800]
 layout_mode = 0
 offset_left = 25.0
@@ -147,6 +180,12 @@ player = NodePath("../../../Grid/Player")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ix8ov")
+
+[node name="controles_screen" parent="CanvasLayer" unique_id=1953633325 instance=ExtResource("9_slotg")]
+offset_left = 134.0
+offset_top = 67.0
+offset_right = -132.0
+offset_bottom = -71.0
 
 [connection signal="damaged" from="Grid/Player" to="CanvasLayer/StatusBox/PlayerHealthBarText" method="_on_player_damaged"]
 [connection signal="mana_spent" from="Grid/Player" to="CanvasLayer/StatusBox/ManaFlowContainer" method="_on_player_mana_spent"]
