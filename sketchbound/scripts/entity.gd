@@ -7,6 +7,8 @@ var hp
 @export var initial_pos : Vector2i
 @export var grid : Grid
 
+@onready var sprite : AnimatedSprite2D
+
 signal damaged(value:int)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -14,6 +16,7 @@ func _process(_delta: float) -> void:
 
 func take_damage(dmg:int) -> void:
 	hp -= dmg
+	sprite.play("hurt")
 	if is_dead() and self is Enemy:  
 		grid.erase_entity(self)
 		self.hide()
@@ -22,3 +25,6 @@ func take_damage(dmg:int) -> void:
 
 func is_dead() -> bool:
 	return hp<=0
+
+func _on_animation_finished() -> void:
+	sprite.play("idle")

@@ -6,6 +6,8 @@ var move_points : int
 func _ready() -> void:
 	hp = 28
 	health_bar.set_up(hp)
+	sprite = $AnimatedSprite2D
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func do_turn() -> void:
 	move_points = 1
@@ -28,6 +30,7 @@ func _try_attack() -> bool:
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
 				entity.take_damage(6)
+				sprite.play("attack")
 				return true
 	return false
 

@@ -6,6 +6,8 @@ var move_points : int
 func _ready() -> void:
 	hp = 15
 	health_bar.set_up(hp)
+	sprite = $AnimatedSprite2D
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func do_turn() -> void:
 	move_points = 1
@@ -18,8 +20,6 @@ func do_turn() -> void:
 		grid.set_entity_pos(self, next_cell)
 		move_points -= 1
 		if _try_attack(): return
-		
-			
 
 func _try_attack() -> bool:
 	for i in range(-3, 4):
@@ -39,6 +39,7 @@ func _try_attack() -> bool:
 						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
 					elif(i >0 && j == 0):
 						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(-1, 0))
+				sprite.play("attack")
 				return true
 	return false
 	

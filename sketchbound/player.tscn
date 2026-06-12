@@ -1,45 +1,53 @@
 [gd_scene format=3 uid="uid://bdkog88sqqrjm"]
 
 [ext_resource type="Script" uid="uid://epqjl5o00cis" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://deekhhqvrkexo" path="res://assets/jogador/Magico_Atk_2.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bteu4o2684fu8" path="res://assets/jogador/Magico_Idle_2.png" id="2_onrkg"]
-[ext_resource type="Texture2D" uid="uid://db3pd1uihgnf3" path="res://UI/seta_fodase.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://djcfonesuid28" path="res://assets/jogador/Magico_Dmg_2.png" id="3_sweqy"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hqtel"]
-texture = ExtResource("3_i3pqv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("2_hqtel")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b26j0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw050")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}]
 
 [node name="Player" type="Node2D" unique_id=1581596336]
 script = ExtResource("1_onrkg")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1874077630]
-texture = ExtResource("2_onrkg")
-
-[node name="seta_baixo" type="Panel" parent="." unique_id=1202358332]
-offset_left = 19.0
-offset_top = 43.0
-offset_right = 59.0
-offset_bottom = 83.0
-rotation = 1.5707964
-theme_override_styles/panel = SubResource("StyleBoxTexture_hqtel")
-
-[node name="seta_dir" type="Panel" parent="." unique_id=1757841103]
-offset_left = 51.0
-offset_top = -12.0
-offset_right = 91.0
-offset_bottom = 28.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_hqtel")
-
-[node name="seta_esq" type="Panel" parent="." unique_id=909017176]
-offset_left = -47.0
-offset_top = 28.0
-offset_right = -7.0
-offset_bottom = 68.0
-rotation = 3.1415927
-theme_override_styles/panel = SubResource("StyleBoxTexture_hqtel")
-
-[node name="seta_cima" type="Panel" parent="." unique_id=388863133]
-offset_left = -24.0
-offset_top = -44.0
-offset_right = 16.0
-offset_bottom = -4.0
-rotation = -1.5707964
-theme_override_styles/panel = SubResource("StyleBoxTexture_hqtel")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1842253790]
+sprite_frames = SubResource("SpriteFrames_b26j0")
+animation = &"hurt"
+autoplay = "idle"

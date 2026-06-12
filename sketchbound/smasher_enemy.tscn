@@ -1,8 +1,49 @@
 [gd_scene format=3 uid="uid://bk17pkxhh8gr"]
 
 [ext_resource type="Script" uid="uid://d8u6wfursh3n" path="res://scripts/smasher_enemy.gd" id="1_4mexy"]
+[ext_resource type="Texture2D" uid="uid://bogogd67ucam3" path="res://assets/inimigos/Construtor/Construtor_Atk_2.png" id="2_7ursb"]
 [ext_resource type="Texture2D" uid="uid://bui1lhyi4row5" path="res://assets/inimigos/Construtor/Construtor_Idle_2.png" id="2_gaw2j"]
+[ext_resource type="Texture2D" uid="uid://clybuh8ej30nw" path="res://assets/inimigos/Construtor/Construtor_Dmg_2.png" id="3_uplco"]
 [ext_resource type="Script" uid="uid://bcrvk5x4mbgii" path="res://scripts/health_bar.gd" id="3_vadps"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4wor"]
+atlas = ExtResource("2_7ursb")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ffxu"]
+atlas = ExtResource("3_uplco")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2ffy"]
+atlas = ExtResource("2_gaw2j")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bk6oq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4wor")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ffxu")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2ffy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv67h"]
 bg_color = Color(0.88797605, 0, 0.06845436, 1)
@@ -13,8 +54,10 @@ bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
 [node name="SmasherEnemy" type="Node2D" unique_id=1695074079]
 script = ExtResource("1_4mexy")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=672824573]
-texture = ExtResource("2_gaw2j")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1785280031]
+sprite_frames = SubResource("SpriteFrames_bk6oq")
+animation = &"hurt"
+autoplay = "idle"
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=877597661]
 offset_left = -38.0
