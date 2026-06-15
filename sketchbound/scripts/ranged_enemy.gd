@@ -29,7 +29,9 @@ func _try_attack() -> bool:
 			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
-				entity.take_damage(5)
+				#entity.take_damage(5)
+				entity.take_damage(1)
+				entity.hunt()
 				if(_try_attack_step()):
 					if(i ==0 && j > 0):
 						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, -1))

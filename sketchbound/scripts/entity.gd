@@ -22,6 +22,7 @@ func take_damage(dmg:int) -> void:
 		self.hide()
 		process_mode = Node.PROCESS_MODE_DISABLED
 	damaged.emit(hp)
+	
 
 func is_dead() -> bool:
 	return hp<=0

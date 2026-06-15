@@ -5,6 +5,7 @@ var mana_cost : int
 var movement_cost := 0
 var damage : int
 var id : int
+var player_damage : int
 
 # List of cells in the card effect's range
 # (0,0) is the player's position

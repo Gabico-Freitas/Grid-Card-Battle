@@ -9,6 +9,7 @@ var mana := MAX_MANA
 var draw_pile : Array[Card] = []
 var hand : Array[Card] = []
 var discard_pile : Array[Card] = []
+var hunted : bool
 
 @export var hand_cards: Hand_Card
 var aiming = false
@@ -34,6 +35,10 @@ func _ready() -> void:
 func new_turn_refresh() -> void:
 	move_points = MAX_MOVE_POINTS
 	mana = MAX_MANA
+	if hunted:
+		move_points -= 1
+		mana -= 1
+		hunted = false
 	my_turn = true
 	moved.emit(move_points,MAX_MOVE_POINTS)
 	mana_spent.emit(mana, MAX_MANA)
@@ -169,6 +174,9 @@ func _update_highlight_card_aof() -> void:
 		var target_cell = my_pos + tile
 		grid.highlight_cell(target_cell, true)
 		highlighted_cells.append(target_cell)
+		
+func hunt() -> void:
+	hunted = true
 
 enum Direction {
 	UP,

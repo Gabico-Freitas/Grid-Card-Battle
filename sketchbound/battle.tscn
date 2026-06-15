@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
+[ext_resource type="Script" uid="uid://cw3mhmppt7nr7" path="res://scripts/thief.gd" id="8_ix8ov"]
 [ext_resource type="PackedScene" uid="uid://u4v3dwilp02u" path="res://UI/controles_screen.tscn" id="9_slotg"]
 [ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="10_ol6im"]
 [ext_resource type="Texture2D" uid="uid://bnw28i4p4gobj" path="res://UI/Icons/MovimentoColorido_BG.png" id="11_4s0ev"]
@@ -99,6 +100,11 @@ grid = NodePath("..")
 
 [node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("7_mhv3b")]
 initial_pos = Vector2i(1, 0)
+grid = NodePath("..")
+
+[node name="RangedEnemy2" parent="Grid" unique_id=666451347 node_paths=PackedStringArray("grid") instance=ExtResource("7_mhv3b")]
+script = ExtResource("8_ix8ov")
+initial_pos = Vector2i(2, 0)
 grid = NodePath("..")
 
 [node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
