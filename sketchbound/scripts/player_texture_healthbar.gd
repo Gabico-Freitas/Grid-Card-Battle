@@ -18,8 +18,10 @@ func set_health_bar() ->void:
 	self.value = currHealth
 	
 func set_health_label() ->void:
-	health.text = str(currHealth)
-
+	if currHealth>0:
+		health.text = str(currHealth)
+	else:
+		health.text = ""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -28,7 +30,8 @@ func _on_player_damaged(value: int) -> void:
 	currHealth = value
 	set_health_bar()
 	set_health_label()
-	#shake()
+	if currHealth>0:
+		shake()
 
 func reset_tween() -> void:
 	if tween:

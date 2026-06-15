@@ -4,6 +4,7 @@ extends Node2D
 var player : Player
 var enemies : Array[Enemy]
 var is_player_turn : bool
+var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +14,8 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
-	player.new_turn_refresh()
+	if $CanvasLayer/controles_screen.visible:
+		player.new_turn_refresh()
 
 func enemies_turn() -> void:
 	
@@ -27,9 +29,26 @@ func enemies_turn() -> void:
 	
 	for e in enemies: e.do_turn()
 	
-	if player.is_dead(): get_tree().change_scene_to_file("res://UI/game_over.tscn")
+	if player.is_dead():
+		death(0)
+		
 	player.new_turn_refresh()
 	pass
+func reset_tween() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+
+func death(mode: int) ->void:
+	reset_tween()
+	if mode==1:
+		get_tree().change_scene_to_file("res://UI/game_over.tscn")
+	else:
+		tween.tween_property(player.sprite, "skew", 0.5, 3.2)
+		var destino = Vector2(player.sprite.offset.x, 120)
+		tween.tween_property(player.sprite, "offset", destino, 5.2)
+		await tween.finished
+		death(1)
 
 func _on_player_turn_ended() -> void:
 	enemies_turn()
