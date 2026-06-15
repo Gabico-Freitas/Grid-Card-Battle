@@ -14,6 +14,9 @@ signal damaged(value:int)
 func _process(_delta: float) -> void:
 	position = grid.get_entity_world_coordinates(self)
 
+@abstract
+func new_turn_refresh() -> void
+
 func take_damage(dmg:int) -> void:
 	hp -= dmg
 	sprite.play("hurt")
@@ -22,6 +25,7 @@ func take_damage(dmg:int) -> void:
 		self.hide()
 		process_mode = Node.PROCESS_MODE_DISABLED
 	damaged.emit(hp)
+	
 
 func is_dead() -> bool:
 	return hp<=0

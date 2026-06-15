@@ -27,7 +27,9 @@ func enemies_turn() -> void:
 	
 	if enemies.is_empty(): get_tree().change_scene_to_file("res://UI/win_screen.tscn")
 	
-	for e in enemies: e.do_turn()
+	for e in enemies:
+		e.new_turn_refresh()
+		while(!e.do_move()): await get_tree().create_timer(1.0).timeout
 	
 	if player.is_dead():
 		death(0)

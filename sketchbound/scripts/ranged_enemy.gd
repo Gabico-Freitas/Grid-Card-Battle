@@ -2,6 +2,8 @@ extends Enemy
 
 @onready var health_bar = $HealthBar
 var move_points : int
+var path : Array[Vector2i]
+var has_attacked : bool
 
 func _ready() -> void:
 	hp = 15
@@ -9,17 +11,24 @@ func _ready() -> void:
 	sprite = $AnimatedSprite2D
 	sprite.animation_finished.connect(_on_animation_finished)
 
-func do_turn() -> void:
+func new_turn_refresh() -> void:
 	move_points = 1
-	var path = grid.path_to_player(self)
+	path = grid.path_to_player(self)
+	has_attacked = false
+
+func do_move() -> bool:
+	if has_attacked: return true
+	if _try_attack():
+		has_attacked = true
+		return false
+	if move_points<=0: return true
 	
-	if _try_attack(): return
-	while(move_points > 0):
-		if path.is_empty(): return
-		var next_cell = path.pop_front()
-		grid.set_entity_pos(self, next_cell)
-		move_points -= 1
-		if _try_attack(): return
+	if path.is_empty(): return true
+	var next_cell = path.pop_front()
+	grid.set_entity_pos(self, next_cell)
+	move_points -= 1
+	
+	return false
 
 func _try_attack() -> bool:
 	for i in range(-3, 4):
@@ -29,7 +38,9 @@ func _try_attack() -> bool:
 			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
-				entity.take_damage(5)
+				#entity.take_damage(5)
+				entity.take_damage(1)
+				entity.hunt()
 				if(_try_attack_step()):
 					if(i ==0 && j > 0):
 						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, -1))
