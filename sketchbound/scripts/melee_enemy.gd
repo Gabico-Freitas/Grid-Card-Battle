@@ -3,6 +3,8 @@ class_name Melee
 
 @onready var health_bar = $HealthBar
 var move_points : int
+var path : Array[Vector2i]
+var has_attacked : bool
 
 func _ready() -> void:
 	hp = 20
@@ -10,17 +12,24 @@ func _ready() -> void:
 	sprite = $AnimatedSprite2D
 	sprite.animation_finished.connect(_on_animation_finished)
 
-func do_turn() -> void:
+func new_turn_refresh() -> void:
 	move_points = 2
-	var path = grid.path_to_player(self)
+	path = grid.path_to_player(self)
+	has_attacked = false
+
+func do_move() -> bool:
+	if has_attacked: return true
+	if _try_attack():
+		has_attacked = true
+		return false
+	if move_points<=0: return true
 	
-	if _try_attack(): return
-	while(move_points > 0):
-		if path.is_empty(): return
-		var next_cell = path.pop_front()
-		grid.set_entity_pos(self, next_cell)
-		move_points -= 1
-		if _try_attack(): return
+	if path.is_empty(): return true
+	var next_cell = path.pop_front()
+	grid.set_entity_pos(self, next_cell)
+	move_points -= 1
+	
+	return false
 
 func _try_attack() -> bool:
 	for i in range(-1, 2):
