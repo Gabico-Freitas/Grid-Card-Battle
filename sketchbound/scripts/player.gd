@@ -138,16 +138,16 @@ func _handle_input_selected_card(event: InputEvent) -> void:
 		selected_card = null
 		_update_highlight_card_aof()
 	
-	if(event.is_action_pressed("AimUp")): 
+	if(event.is_action_pressed("Up")): 
 		aim_direction = Direction.UP
 		_update_highlight_card_aof()
-	if(event.is_action_pressed("AimRight")):
+	if(event.is_action_pressed("Right")):
 		aim_direction = Direction.RIGHT
 		_update_highlight_card_aof()
-	if(event.is_action_pressed("AimDown")):
+	if(event.is_action_pressed("Down")):
 		aim_direction = Direction.DOWN
 		_update_highlight_card_aof()
-	if(event.is_action_pressed("AimLeft")):
+	if(event.is_action_pressed("Left")):
 		aim_direction = Direction.LEFT
 		_update_highlight_card_aof()
 	

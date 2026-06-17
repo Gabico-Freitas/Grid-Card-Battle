@@ -3,7 +3,7 @@ extends Node
 var current_level := 1
 var deck : Array[Card] = []
 var _initial_deck = {
-	PunchCard: 6,
+	PunchCard: 4,
 	SpearCard: 1,
 	ArrowCard: 2,
 	SlashCard: 2,

@@ -51,19 +51,22 @@ player = NodePath("Player")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("ui", "grid") instance=ExtResource("6_s77qv")]
 ui = NodePath("../../UI")
-initial_pos = Vector2i(3, 2)
+initial_pos = Vector2i(2, 2)
 grid = NodePath("..")
 
-[node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("7_5hnhx")]
-initial_pos = Vector2i(7, 3)
+[node name="MeleeEnemy" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("7_5hnhx")]
+initial_pos = Vector2i(5, 1)
 grid = NodePath("..")
 
 [node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("8_78pok")]
-initial_pos = Vector2i(1, 0)
+grid = NodePath("..")
+
+[node name="RangedEnemy2" parent="Grid" unique_id=2086198540 node_paths=PackedStringArray("grid") instance=ExtResource("8_78pok")]
+initial_pos = Vector2i(7, 2)
 grid = NodePath("..")
 
 [node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("9_lvfll")]
-initial_pos = Vector2i(2, 2)
+initial_pos = Vector2i(3, 2)
 grid = NodePath("..")
 
 [connection signal="damaged" from="Grid/Player" to="UI" method="_on_player_damaged"]
