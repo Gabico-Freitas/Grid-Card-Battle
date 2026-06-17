@@ -16,8 +16,7 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
-	if ui.is_controls_screen_visible():
-		player.new_turn_refresh()
+	player.new_turn_refresh()
 
 func enemies_turn() -> void:
 	
@@ -27,7 +26,7 @@ func enemies_turn() -> void:
 		else: living_enemies.append(e)
 	enemies = living_enemies
 	
-	if enemies.is_empty(): get_tree().change_scene_to_file("res://UI/win_screen.tscn")
+	if enemies.is_empty(): GlobalData.next_level()
 	
 	for e in enemies:
 		e.new_turn_refresh()
@@ -38,6 +37,7 @@ func enemies_turn() -> void:
 		
 	player.new_turn_refresh()
 	pass
+
 func reset_tween() -> void:
 	if tween:
 		tween.kill()

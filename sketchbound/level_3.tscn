@@ -1,0 +1,73 @@
+[gd_scene format=4 uid="uid://7scyn4ufrngg"]
+
+[ext_resource type="Script" uid="uid://blk5iyj7tnsp1" path="res://scripts/battle.gd" id="1_liaj6"]
+[ext_resource type="Texture2D" uid="uid://bwiktmxfby0kv" path="res://UI/Icons/Mesas/MesaMadeiraV2.png" id="2_b60u5"]
+[ext_resource type="PackedScene" uid="uid://bruxv3bouv8vj" path="res://battle_ui.tscn" id="3_kmy7e"]
+[ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="4_833wy"]
+[ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="5_ghrvs"]
+[ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="6_jvy75"]
+[ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="7_g0tlw"]
+[ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="8_keufu"]
+[ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="9_joegk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
+texture = ExtResource("2_b60u5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw4jg"]
+texture = ExtResource("4_833wy")
+texture_region_size = Vector2i(108, 108)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0npn6"]
+tile_size = Vector2i(108, 108)
+sources/0 = SubResource("TileSetAtlasSource_dw4jg")
+
+[node name="Level3" type="Node2D" unique_id=387018158]
+script = ExtResource("1_liaj6")
+
+[node name="Background" type="Panel" parent="." unique_id=502224099]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pihy1")
+
+[node name="UI" parent="." unique_id=1698300715 node_paths=PackedStringArray("player") instance=ExtResource("3_kmy7e")]
+player = NodePath("../Grid/Player")
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=360654667 node_paths=PackedStringArray("player")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_0npn6")
+script = ExtResource("5_ghrvs")
+player = NodePath("Player")
+
+[node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("ui", "grid") instance=ExtResource("6_jvy75")]
+ui = NodePath("../../UI")
+initial_pos = Vector2i(3, 2)
+grid = NodePath("..")
+
+[node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("7_g0tlw")]
+initial_pos = Vector2i(7, 3)
+grid = NodePath("..")
+
+[node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("8_keufu")]
+initial_pos = Vector2i(1, 0)
+grid = NodePath("..")
+
+[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("9_joegk")]
+initial_pos = Vector2i(2, 2)
+grid = NodePath("..")
+
+[connection signal="damaged" from="Grid/Player" to="UI" method="_on_player_damaged"]
+[connection signal="mana_spent" from="Grid/Player" to="UI" method="_on_player_mana_spent"]
+[connection signal="moved" from="Grid/Player" to="UI" method="_on_player_moved"]
+[connection signal="turn_ended" from="Grid/Player" to="." method="_on_player_turn_ended"]
+[connection signal="turn_ended" from="Grid/Player" to="UI" method="_on_player_turn_ended"]

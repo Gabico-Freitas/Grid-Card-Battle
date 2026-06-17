@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="3_0npn6"]
 [ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="4_6t8i5"]
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="5_dw4jg"]
-[ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="6_0npn6"]
-[ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="7_mhv3b"]
+[ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="8_5rr72"]
 [ext_resource type="PackedScene" uid="uid://bruxv3bouv8vj" path="res://battle_ui.tscn" id="9_lcjiy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
@@ -23,10 +22,10 @@ texture_region_size = Vector2i(108, 108)
 tile_size = Vector2i(108, 108)
 sources/0 = SubResource("TileSetAtlasSource_dw4jg")
 
-[node name="Battle" type="Node2D" unique_id=387018158]
+[node name="Level1" type="Node2D" unique_id=387018158]
 script = ExtResource("1_6t8i5")
 
-[node name="Panel" type="Panel" parent="." unique_id=502224099]
+[node name="Background" type="Panel" parent="." unique_id=502224099]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -51,19 +50,15 @@ player = NodePath("Player")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("ui", "grid") instance=ExtResource("4_6t8i5")]
 ui = NodePath("../../UI")
-initial_pos = Vector2i(3, 2)
+initial_pos = Vector2i(1, 1)
 grid = NodePath("..")
 
 [node name="Melee" parent="Grid" unique_id=856499317 node_paths=PackedStringArray("grid") instance=ExtResource("5_dw4jg")]
-initial_pos = Vector2i(7, 3)
+initial_pos = Vector2i(4, 1)
 grid = NodePath("..")
 
-[node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("7_mhv3b")]
-initial_pos = Vector2i(1, 0)
-grid = NodePath("..")
-
-[node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("6_0npn6")]
-initial_pos = Vector2i(2, 2)
+[node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("8_5rr72")]
+initial_pos = Vector2i(6, 2)
 grid = NodePath("..")
 
 [connection signal="damaged" from="Grid/Player" to="UI" method="_on_player_damaged"]
