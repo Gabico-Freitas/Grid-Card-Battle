@@ -11,7 +11,7 @@ var hand : Array[Card] = []
 var discard_pile : Array[Card] = []
 var stolen : bool
 
-@export var hand_cards: Hand_Card
+@export var ui : UI
 var aiming = false
 
 var selected_card : Card = null
@@ -52,7 +52,7 @@ func _draw_cards() -> void:
 		if(draw_pile.size() == 0): _discard_to_draw()
 		var c = draw_pile.pop_front()
 		hand.append(c)
-	hand_cards.update_hand(hand)
+	ui.update_hand(hand)
 
 func _discard_to_draw() -> void:
 	draw_pile.append_array(discard_pile)
@@ -83,8 +83,8 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	
 	hand.erase(c)
 	discard_pile.append(c)
-	if is_instance_valid(hand_cards):
-		hand_cards.update_hand(hand)
+	if is_instance_valid(ui):
+		ui.update_hand(hand)
 	
 	sprite.play("attack")
 	

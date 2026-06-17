@@ -22,9 +22,6 @@ func set_health_label() ->void:
 		health.text = str(currHealth)
 	else:
 		health.text = ""
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_player_damaged(value: int) -> void:
 	currHealth = value

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bruxv3bouv8vj"]
+
+[ext_resource type="PackedScene" uid="uid://6u1vuab8jcxr" path="res://UI/CartasUI/hand_cards.tscn" id="1_p5qam"]
+[ext_resource type="Script" uid="uid://bh71j3r4q43yo" path="res://UI/battle_ui.gd" id="1_vkul4"]
+[ext_resource type="Texture2D" uid="uid://dem7y6pbfjrw3" path="res://UI/Icons/BarradeVida.png" id="2_vkul4"]
+[ext_resource type="Script" uid="uid://b1yipgxb0avhl" path="res://scripts/player_texture_healthbar.gd" id="3_xqwdr"]
+[ext_resource type="Script" uid="uid://bix2cas80cugt" path="res://UI/moves_flow.gd" id="4_0jaeu"]
+[ext_resource type="Texture2D" uid="uid://bnw28i4p4gobj" path="res://UI/Icons/MovimentoColorido_BG.png" id="5_u4y3o"]
+[ext_resource type="Script" uid="uid://j831xacrxwab" path="res://UI/mana_flow.gd" id="6_dkxd7"]
+[ext_resource type="Texture2D" uid="uid://b5wl0xj3dfmbn" path="res://UI/Icons/ManaColorido_BG.png" id="7_b754q"]
+[ext_resource type="PackedScene" uid="uid://u4v3dwilp02u" path="res://UI/controles_screen.tscn" id="8_pl173"]
+
+[sub_resource type="GDScript" id="GDScript_slotg"]
+script/source = "extends Node
+
+@onready var bar : TextureProgressBar = get_parent() 
+
+@export var shake_amount: float = 8.0
+@export var shake_duration: float = 0.2
+@onready var default_position: Vector2 = bar.position
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func shake():
+	var tween = create_tween()
+	var elapsed_time = 0.0
+	while elapsed_time < shake_duration:
+		var random_offset = Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
+		bar.position = default_position + random_offset
+		await get_tree().process_frame
+		elapsed_time += get_process_delta_time()
+	bar.position = default_position
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slotg"]
+texture = ExtResource("5_u4y3o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix8ov"]
+texture = ExtResource("7_b754q")
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1698300715]
+script = ExtResource("1_vkul4")
+
+[node name="HandCards" parent="." unique_id=464823249 instance=ExtResource("1_p5qam")]
+offset_left = 180.0
+offset_top = -212.0
+offset_right = -107.0
+offset_bottom = -18.0
+
+[node name="StatusBox" type="VBoxContainer" parent="." unique_id=485193525]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -279.0
+offset_top = 26.0
+offset_right = -6.0
+offset_bottom = 297.0
+grow_horizontal = 0
+scale = Vector2(0.92, 1)
+
+[node name="PlayerHealthBarText" type="TextureProgressBar" parent="StatusBox" unique_id=1724851315]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+nine_patch_stretch = true
+texture_progress = ExtResource("2_vkul4")
+script = ExtResource("3_xqwdr")
+
+[node name="HealthBarShake" type="Node" parent="StatusBox/PlayerHealthBarText" unique_id=853847946]
+script = SubResource("GDScript_slotg")
+
+[node name="PlayerHealth" type="Label" parent="StatusBox/PlayerHealthBarText" unique_id=1826158645]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 256.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="StatusBox" unique_id=568953883]
+light_mask = 0
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="MoveFlowContainer" type="HFlowContainer" parent="StatusBox" unique_id=14167818]
+layout_mode = 2
+script = ExtResource("4_0jaeu")
+
+[node name="MovesIcon" type="Panel" parent="StatusBox/MoveFlowContainer" unique_id=290025934]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_slotg")
+
+[node name="HSeparator2" type="HSeparator" parent="StatusBox" unique_id=1467980208]
+light_mask = 0
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="ManaFlowContainer" type="HFlowContainer" parent="StatusBox" unique_id=1680995260]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+script = ExtResource("6_dkxd7")
+
+[node name="ManaIcon" type="Panel" parent="StatusBox/ManaFlowContainer" unique_id=2069524645]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ix8ov")
+
+[node name="ControlsScreen" parent="." unique_id=1953633325 instance=ExtResource("8_pl173")]
+offset_left = 134.0
+offset_top = 67.0
+offset_right = -132.0
+offset_bottom = -71.0

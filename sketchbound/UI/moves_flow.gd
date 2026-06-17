@@ -7,12 +7,6 @@ func _ready() -> void:
 		var icon = $MovesIcon.duplicate()
 		add_child(icon)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_player_moved(curr_moves: int, max_moves: int) -> void:
 	for i in range(get_child_count()):
 		var icon = get_child(i)

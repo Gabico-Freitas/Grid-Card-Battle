@@ -4,6 +4,8 @@ extends Node2D
 var player : Player
 var enemies : Array[Enemy]
 var is_player_turn : bool
+
+@onready var ui := $UI
 var tween: Tween
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +16,7 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
-	if $CanvasLayer/controles_screen.visible:
+	if ui.is_controls_screen_visible():
 		player.new_turn_refresh()
 
 func enemies_turn() -> void:
