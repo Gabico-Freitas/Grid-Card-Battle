@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func new_turn_refresh() -> void:
 	move_points = 1
-	path = grid.path_to_player(self)
 	has_attacked = false
 	has_attack_stepped = false
 
@@ -29,11 +28,34 @@ func do_move() -> bool:
 		return false
 	if move_points<=0: return true
 	
+	return move()
+
+func move() -> bool:
+	# Checks if it can make itself in-range with a move
+	var pos = grid.get_entity_pos(self)
+	if(_could_attack(pos + Vector2i(1, 0))): 
+		grid.set_entity_pos(self, pos + Vector2i(1, 0))
+		move_points -= 1
+		return false
+	if(_could_attack(pos + Vector2i(-1, 0))):
+		grid.set_entity_pos(self, pos + Vector2i(-1, 0))
+		move_points -= 1
+		return false
+	if(_could_attack(pos + Vector2i(0, 1))):
+		grid.set_entity_pos(self, pos + Vector2i(0, 1))
+		move_points -= 1
+		return false
+	if(_could_attack(pos + Vector2i(0, -1))):
+		grid.set_entity_pos(self, pos + Vector2i(0, -1))
+		move_points -= 1
+		return false
+	
+	# Otherwise, move closer with A*
+	path = grid.path_to_player(self)
 	if path.is_empty(): return true
 	var next_cell = path.pop_front()
 	grid.set_entity_pos(self, next_cell)
 	move_points -= 1
-	
 	return false
 
 func _try_attack() -> bool:
@@ -48,7 +70,17 @@ func _try_attack() -> bool:
 				sprite.play("attack")
 				return true
 	return false
-	
+
+func _could_attack(my_pos:Vector2i) -> bool:
+	for i in range(-3, 4):
+		for j in range(-3, 4):
+			if i !=0 and j != 0:
+				continue
+			var target_cell = my_pos + Vector2i(i, j)
+			var entity = grid.get_entity(target_cell)
+			if entity is Player: return true
+	return false
+
 func _try_attack_step() -> bool:
 	for i in range(-2, 3):
 		for j in range(-2, 3):
