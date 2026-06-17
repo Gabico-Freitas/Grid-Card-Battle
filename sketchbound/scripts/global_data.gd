@@ -6,8 +6,7 @@ var _initial_deck = {
 	SpearCard: 1,
 	ArrowCard: 2,
 	SlashCard: 2,
-	HammerCard: 1,
-	NewCard: 5
+	HammerCard: 1
 }
 
 # Called when the node enters the scene tree for the first time.

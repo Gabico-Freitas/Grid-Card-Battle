@@ -4,6 +4,7 @@ extends Enemy
 var move_points : int
 var path : Array[Vector2i]
 var has_attacked : bool
+var has_attack_stepped : bool
 
 func _ready() -> void:
 	hp = 15
@@ -15,9 +16,14 @@ func new_turn_refresh() -> void:
 	move_points = 1
 	path = grid.path_to_player(self)
 	has_attacked = false
+	has_attack_stepped = false
 
 func do_move() -> bool:
-	if has_attacked: return true
+	if has_attacked:
+		if(!has_attack_stepped and _try_attack_step()):
+			has_attack_stepped = true
+			return false
+		return true
 	if _try_attack():
 		has_attacked = true
 		return false
@@ -38,24 +44,12 @@ func _try_attack() -> bool:
 			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
-				#entity.take_damage(5)
-				entity.take_damage(1)
-				entity.hunt()
-				if(_try_attack_step()):
-					if(i ==0 && j > 0):
-						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, -1))
-					elif(i ==0 && j < 0):
-						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, 1))
-					elif(i <0 && j ==0 ):
-						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
-					elif(i >0 && j == 0):
-						grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(-1, 0))
+				entity.take_damage(5)
 				sprite.play("attack")
 				return true
 	return false
 	
 func _try_attack_step() -> bool:
-	#fazer um for para cada posição possivel do player (que são as 4 direções de ataque)
 	for i in range(-2, 3):
 		for j in range(-2, 3):
 			if i !=0 and j != 0:
@@ -63,7 +57,14 @@ func _try_attack_step() -> bool:
 			var target_cell = grid.get_entity_pos(self) + Vector2i(i, j)
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
-				#entity.take_damage(5)
+				if(i ==0 && j > 0):
+					grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, -1))
+				elif(i ==0 && j < 0):
+					grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(0, 1))
+				elif(i <0 && j ==0 ):
+					grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(1, 0))
+				elif(i >0 && j == 0):
+					grid.set_entity_pos(self, grid.get_entity_pos(self) + Vector2i(-1, 0))
 				return true
 	return false
 

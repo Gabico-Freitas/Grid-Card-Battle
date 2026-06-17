@@ -21,6 +21,12 @@ func do_turn() -> void:
 		move_points -= 1
 		if _try_attack(): return
 
+func new_turn_refresh() -> void:
+	return
+
+func do_move() -> bool:
+	return true
+
 func _try_attack() -> bool:
 	for i in range(-2, 3):
 		for j in range(-2, 3):
@@ -30,7 +36,7 @@ func _try_attack() -> bool:
 			var entity = grid.get_entity(target_cell)
 			if entity is Player:
 				entity.take_damage(1)
-				entity.hunt()
+				entity.stolen = true
 				sprite.play("attack")
 				return true
 	return false
