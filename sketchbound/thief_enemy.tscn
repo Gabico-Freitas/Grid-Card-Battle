@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://xv3hmlcyix6s"]
+[gd_scene format=3 uid="uid://jk5t1b8beqfb"]
 
 [ext_resource type="Script" uid="uid://cw3mhmppt7nr7" path="res://scripts/thief.gd" id="1_mpt3g"]
 [ext_resource type="Texture2D" uid="uid://ddyh2q5bry5mb" path="res://assets/inimigos/Ladrao/Ladrao_Atk.png" id="2_o3rum"]
@@ -51,6 +51,14 @@ bg_color = Color(0.88797605, 0, 0.06845436, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn8x6"]
 bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpt3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3rum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cvol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06j0w"]
+
 [node name="Thief" type="Node2D" unique_id=1372790042]
 script = ExtResource("1_mpt3g")
 
@@ -77,3 +85,23 @@ offset_right = 76.0
 offset_bottom = 26.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1145614759]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mpt3g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o3rum")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0cvol")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06j0w")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

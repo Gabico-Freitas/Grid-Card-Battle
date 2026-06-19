@@ -51,6 +51,14 @@ bg_color = Color(0.88797605, 0, 0.06845436, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ursb"]
 bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ursb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uplco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4wor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ffxu"]
+
 [node name="SmasherEnemy" type="Node2D" unique_id=1695074079]
 script = ExtResource("1_4mexy")
 
@@ -78,4 +86,23 @@ offset_bottom = 26.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="." unique_id=89692268]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ursb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uplco")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_e4wor")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ffxu")
+
 [connection signal="damaged" from="." to="." method="_on_damaged"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

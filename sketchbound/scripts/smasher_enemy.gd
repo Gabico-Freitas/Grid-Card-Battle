@@ -45,3 +45,11 @@ func _try_attack() -> bool:
 
 func _on_damaged(_value: int) -> void:
 	health_bar.update_health(hp)
+
+
+func _on_button_mouse_entered() -> void:
+	print("Entrou")
+
+
+func _on_button_mouse_exited() -> void:
+	print("Saiu")
