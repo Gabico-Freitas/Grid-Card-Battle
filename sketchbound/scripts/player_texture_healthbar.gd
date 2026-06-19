@@ -21,7 +21,7 @@ func set_health_label() ->void:
 	if currHealth>0:
 		health.text = str(currHealth)
 	else:
-		health.text = ""
+		health.text = "0"
 
 func _on_player_damaged(value: int) -> void:
 	currHealth = value
