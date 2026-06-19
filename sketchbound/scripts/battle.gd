@@ -47,6 +47,7 @@ func death(mode: int) ->void:
 	reset_tween()
 	if mode==1:
 		get_tree().change_scene_to_file("res://UI/game_over.tscn")
+		GlobalData.reset_level_count()
 	else:
 		tween.tween_property(player.sprite, "skew", 0.5, 3.2)
 		var destino = Vector2(player.sprite.offset.x, 120)

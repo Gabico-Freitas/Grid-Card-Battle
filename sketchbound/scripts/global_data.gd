@@ -27,3 +27,6 @@ func next_level() -> void:
 			get_tree().change_scene_to_file("res://level_3.tscn")
 		_:
 			get_tree().change_scene_to_file("res://UI/win_screen.tscn")
+
+func reset_level_count() -> void:
+	current_level = 1
