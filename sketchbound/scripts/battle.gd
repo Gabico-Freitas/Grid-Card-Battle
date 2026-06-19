@@ -16,6 +16,7 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
+	ui.set_text_button("COMEÇAR") 
 	player.new_turn_refresh()
 
 func enemies_turn() -> void:

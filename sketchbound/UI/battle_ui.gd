@@ -29,3 +29,6 @@ func _on_player_moved(curr_moves: int, max_moves: int) -> void:
 
 func _on_player_mana_spent(curr_mana: int, max_mana: int) -> void:
 	mana_icons._on_player_mana_spent(curr_mana, max_mana)
+
+func set_text_button(text: String) -> void:
+	control_screen.set_text_button(text)

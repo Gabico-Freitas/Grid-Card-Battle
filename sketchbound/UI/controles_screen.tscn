@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://u4v3dwilp02u"]
 
 [ext_resource type="Texture2D" uid="uid://dyofksobkjab2" path="res://UI/Backgrounds/tutorial.png" id="1_4ynl6"]
+[ext_resource type="Script" uid="uid://c0kxfnoc8nxuo" path="res://scripts/controles_screen.gd" id="1_365wx"]
 [ext_resource type="Script" uid="uid://kt0xo3llbmy4" path="res://UI/return_button.gd" id="2_4ynl6"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_l1f1s"]
 
@@ -49,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_365wx")
 
 [node name="Panel" type="Panel" parent="." unique_id=1654592240]
 layout_mode = 1
