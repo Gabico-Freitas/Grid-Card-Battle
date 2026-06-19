@@ -43,13 +43,18 @@ func _try_attack() -> bool:
 				return true
 	return false
 
+func get_attack_zone() -> Array[Vector2i]:
+	var zone : Array[Vector2i]
+	zone = []
+	zone.append(Vector2i(0,1))
+	zone.append(Vector2i(0,-1))
+	zone.append(Vector2i(1,0))
+	zone.append(Vector2i(-1,0))
+	zone.append(Vector2i(1,1))
+	zone.append(Vector2i(1,-1))
+	zone.append(Vector2i(-1,1))
+	zone.append(Vector2i(-1,-1))
+	return zone
+
 func _on_damaged(_value: int) -> void:
 	health_bar.update_health(hp)
-
-
-func _on_button_mouse_entered() -> void:
-	print("Entrou")
-
-
-func _on_button_mouse_exited() -> void:
-	print("Saiu")

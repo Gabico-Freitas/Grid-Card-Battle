@@ -49,5 +49,5 @@ script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1842253790]
 sprite_frames = SubResource("SpriteFrames_b26j0")
-animation = &"hurt"
+animation = &"idle"
 autoplay = "idle"
