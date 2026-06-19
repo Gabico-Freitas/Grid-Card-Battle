@@ -103,5 +103,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_o3rum")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0cvol")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_06j0w")
 
+[connection signal="damaged" from="." to="." method="_on_damaged"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
