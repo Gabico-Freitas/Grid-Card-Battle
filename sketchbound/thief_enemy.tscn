@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://xv3hmlcyix6s"]
+
+[ext_resource type="Script" uid="uid://cw3mhmppt7nr7" path="res://scripts/thief.gd" id="1_mpt3g"]
+[ext_resource type="Texture2D" uid="uid://ddyh2q5bry5mb" path="res://assets/inimigos/Ladrao/Ladrao_Atk.png" id="2_o3rum"]
+[ext_resource type="Texture2D" uid="uid://becmuttucx04d" path="res://assets/inimigos/Ladrao/Ladrao_Dmg.png" id="3_0cvol"]
+[ext_resource type="Texture2D" uid="uid://cjskrwm0atw1x" path="res://assets/inimigos/Ladrao/Ladrao_Idle.png" id="4_06j0w"]
+[ext_resource type="Script" uid="uid://bcrvk5x4mbgii" path="res://scripts/health_bar.gd" id="5_vbfqq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2cmq"]
+atlas = ExtResource("2_o3rum")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2vxy"]
+atlas = ExtResource("3_0cvol")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8w4t"]
+atlas = ExtResource("4_06j0w")
+region = Rect2(0, 0, 108, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6ia0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2cmq")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2vxy")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8w4t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an5x1"]
+bg_color = Color(0.88797605, 0, 0.06845436, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn8x6"]
+bg_color = Color(0.38621014, 0.6396811, 3.85046e-07, 1)
+
+[node name="Thief" type="Node2D" unique_id=1372790042]
+script = ExtResource("1_mpt3g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632714763]
+sprite_frames = SubResource("SpriteFrames_y6ia0")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1250702906]
+offset_left = -38.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_an5x1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qn8x6")
+show_percentage = false
+script = ExtResource("5_vbfqq")
+
+[node name="Health" type="Label" parent="HealthBar" unique_id=1438520109]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 26.0
+horizontal_alignment = 1
+vertical_alignment = 1
