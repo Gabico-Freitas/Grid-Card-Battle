@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bruxv3bouv8vj" path="res://battle_ui.tscn" id="3_kmy7e"]
 [ext_resource type="Texture2D" uid="uid://suqt1jdew35j" path="res://assets/grid_tile.png" id="4_833wy"]
 [ext_resource type="Script" uid="uid://mo1onamdpec3" path="res://scripts/grid.gd" id="5_ghrvs"]
+[ext_resource type="PackedScene" uid="uid://jk5t1b8beqfb" path="res://thief_enemy.tscn" id="6_b60u5"]
 [ext_resource type="PackedScene" uid="uid://bdkog88sqqrjm" path="res://player.tscn" id="6_jvy75"]
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="7_g0tlw"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="8_keufu"]
@@ -48,6 +49,10 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = SubResource("TileSet_0npn6")
 script = ExtResource("5_ghrvs")
 player = NodePath("Player")
+
+[node name="Thief" parent="Grid" unique_id=1372790042 node_paths=PackedStringArray("grid") instance=ExtResource("6_b60u5")]
+initial_pos = Vector2i(1, 2)
+grid = NodePath("..")
 
 [node name="Player" parent="Grid" unique_id=1581596336 node_paths=PackedStringArray("ui", "grid") instance=ExtResource("6_jvy75")]
 ui = NodePath("../../UI")
