@@ -32,3 +32,6 @@ func _on_player_mana_spent(curr_mana: int, max_mana: int) -> void:
 
 func set_text_button(text: String) -> void:
 	control_screen.set_text_button(text)
+
+func _on_end_turn_button_pressed() -> void:
+	player.emit_signal("turn_ended")

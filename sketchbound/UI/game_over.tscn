@@ -99,9 +99,9 @@ theme_override_constants/h_separation = 138
 
 [node name="MenuButton" type="Button" parent="HFlowContainer" unique_id=289532042]
 custom_minimum_size = Vector2(172, 76.5)
-layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
+layout_direction = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
@@ -134,8 +134,8 @@ vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="HFlowContainer" unique_id=1766537706]
 custom_minimum_size = Vector2(177, 0)
-layout_direction = 2
 layout_mode = 2
+layout_direction = 2
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")

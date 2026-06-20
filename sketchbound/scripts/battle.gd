@@ -7,6 +7,7 @@ var is_player_turn : bool
 
 @onready var ui := $UI
 var tween: Tween
+@export var curva: Curve
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +17,8 @@ func _ready() -> void:
 		elif(entity is Enemy):
 			enemies.append(entity)
 	
-	ui.set_text_button("COMEÇAR") 
+	ui.set_text_button("COMEÇAR")
+	await ui.control_screen.hidden
 	player.new_turn_refresh()
 
 func enemies_turn() -> void:
@@ -50,11 +52,22 @@ func death(mode: int) ->void:
 		get_tree().change_scene_to_file("res://UI/game_over.tscn")
 		GlobalData.reset_level_count()
 	else:
-		tween.tween_property(player.sprite, "skew", 0.5, 3.2)
-		var destino = Vector2(player.sprite.offset.x, 120)
-		tween.tween_property(player.sprite, "offset", destino, 5.2)
-		await tween.finished
+		await leaf_animation()
 		death(1)
+func leaf_animation() -> void:
+	var pos_inicial = player.sprite.global_position
+	var tempo_queda = 4.0       
+	var altura_queda = DisplayServer.window_get_size().y-pos_inicial.y
+	var largura_balanco = 200.0
+	tween.tween_method(
+		func(progresso: float):
+			var valor_curva = curva.sample(progresso)
+			var deslocamento_x = valor_curva * largura_balanco
+			player.sprite.global_position.x = pos_inicial.x + deslocamento_x
+			player.sprite.global_position.y = pos_inicial.y + (progresso * altura_queda)
+			player.sprite.rotation = valor_curva * 0.5, 0.0, 1.0, tempo_queda).set_trans(Tween.TRANS_LINEAR)
 
+	await tween.finished
+	
 func _on_player_turn_ended() -> void:
 	enemies_turn()
