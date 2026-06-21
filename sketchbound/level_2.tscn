@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="8_78pok"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="9_lvfll"]
 
+[sub_resource type="Curve" id="Curve_gyffv"]
+_limits = [0.0, 1.0, -1.0, 1.0]
+_data = [Vector2(-1, 0.011235952), 0.0, 0.0, 0, 0, Vector2(-0.67, 0.82022476), 0.0, 6.5543075, 0, 0, Vector2(-0.41000003, 0), 0.0, 0.0, 0, 0, Vector2(-0.26000005, 0.79775286), 7.5441422, 7.5441422, 0, 0, Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.19500001, 0.764045), -7.9673166, -7.9673166, 0, 0, Vector2(0.32, 0), 5.4196978, 5.4196978, 0, 0, Vector2(0.45999998, 0.8539326), -2.3793783, -2.3793783, 0, 0, Vector2(0.64, 0.04494381), 5.2434483, 5.2434483, 0, 0, Vector2(0.77, 1), -2.0224717, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 11
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihy1"]
 texture = ExtResource("2_15wb7")
 
@@ -25,6 +30,7 @@ sources/0 = SubResource("TileSetAtlasSource_dw4jg")
 
 [node name="Level2" type="Node2D" unique_id=387018158]
 script = ExtResource("1_ehv2h")
+curva = SubResource("Curve_gyffv")
 
 [node name="Background" type="Panel" parent="." unique_id=502224099]
 anchors_preset = 8
