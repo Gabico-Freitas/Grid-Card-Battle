@@ -42,6 +42,7 @@ func _try_attack() -> bool:
 				entity.take_damage(3)
 				entity.stolen = true
 				sprite.play("attack")
+				SFXManager.play("thief_attack", 4)
 				return true
 	return false
 

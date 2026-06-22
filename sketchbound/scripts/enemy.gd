@@ -13,12 +13,12 @@ func _on_button_mouse_entered() -> void:
 	var my_pos = grid.get_entity_pos(self)
 	for tile in attack_zone:
 		var target_cell = my_pos + tile
-		grid.highlight_cell(target_cell, true)
+		grid.highlight_cell_yellow(target_cell, true)
 		highlighted_cells.append(target_cell)
 
 func _on_button_mouse_exited() -> void:
 	for cell in highlighted_cells:
-		grid.highlight_cell(cell, false)
+		grid.highlight_cell_yellow(cell, false)
 	highlighted_cells.clear()
 
 @abstract

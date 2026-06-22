@@ -41,6 +41,7 @@ func _try_attack() -> bool:
 			if entity is Player:
 				entity.take_damage(5)
 				sprite.play("attack")
+				SFXManager.play("melee_attack", 5)
 				return true
 	return false
 

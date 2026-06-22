@@ -158,7 +158,7 @@ func _handle_input_selected_card(event: InputEvent) -> void:
 
 func _update_highlight_card_aof() -> void:
 	for cell in highlighted_cells:
-		grid.highlight_cell(cell, false)
+		grid.highlight_cell_red(cell, false)
 	highlighted_cells.clear()
 	if selected_card == null: return
 	
@@ -172,7 +172,7 @@ func _update_highlight_card_aof() -> void:
 	var my_pos = grid.get_entity_pos(self)
 	for tile in aof:
 		var target_cell = my_pos + tile
-		grid.highlight_cell(target_cell, true)
+		grid.highlight_cell_red(target_cell, true)
 		highlighted_cells.append(target_cell)
 
 enum Direction {

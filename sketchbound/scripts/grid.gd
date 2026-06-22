@@ -4,6 +4,9 @@ class_name Grid
 var cell_content : Dictionary[Vector2i, Entity]
 var astar : AStarGrid2D
 
+var is_cell_red : Dictionary[Vector2i, bool]
+var is_cell_yellow : Dictionary[Vector2i, bool]
+
 @export var player : Player
 
 # Called when the node enters the scene tree for the first time.
@@ -72,10 +75,24 @@ func path_to_player(e:Enemy) -> Array[Vector2i]:
 		path.pop_back()
 		return path
 
-func highlight_cell(pos:Vector2i, on:bool) -> void:
+func highlight_cell_red(pos:Vector2i, on:bool) -> void:
 	if(!_cell_exists(pos)): return
-	if(on): set_cell(pos, 0, Vector2i(1, 0))
-	else: set_cell(pos, 0, Vector2i(0, 0))
+	is_cell_red[pos] = on
+	_update_cell_color(pos)
+
+func highlight_cell_yellow(pos:Vector2i, on:bool) -> void:
+	if(!_cell_exists(pos)): return
+	is_cell_yellow[pos] = on
+	_update_cell_color(pos)
+
+func _update_cell_color(pos:Vector2i) -> void:
+	if(is_cell_yellow.get(pos)):
+		set_cell(pos, 0, Vector2i(2, 0))
+		return
+	if(is_cell_red.get(pos)):
+		set_cell(pos, 0, Vector2i(1, 0))
+		return
+	set_cell(pos, 0, Vector2i(0, 0))
 
 func _cell_exists(cell:Vector2i) -> bool:
 	return get_cell_source_id(cell) != -1
