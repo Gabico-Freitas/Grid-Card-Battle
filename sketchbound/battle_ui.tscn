@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://u4v3dwilp02u" path="res://UI/controles_screen.tscn" id="8_pl173"]
 [ext_resource type="Script" uid="uid://j2cvj4yhmk0h" path="res://scripts/help_button.gd" id="9_u4y3o"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="10_u4y3o"]
+[ext_resource type="PackedScene" uid="uid://caqeprewevjpm" path="res://UI/pop_up.tscn" id="12_u4y3o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b754q"]
 bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
@@ -169,6 +170,7 @@ offset_right = -7.0
 offset_bottom = -205.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xqwdr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0jaeu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u4y3o")
@@ -256,6 +258,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ix8ov")
 
 [node name="ControlsScreen" parent="." unique_id=1953633325 instance=ExtResource("8_pl173")]
 y_sort_enabled = true
+
+[node name="PopUp" parent="." unique_id=2106410455 instance=ExtResource("12_u4y3o")]
+visible = false
 
 [connection signal="pressed" from="HelpButton" to="HelpButton" method="_on_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]

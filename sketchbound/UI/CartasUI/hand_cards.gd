@@ -44,6 +44,8 @@ func update_hand(player_hand : Array[Card]):
 				cards[i].icon = preload("res://UI/cards_images/hammer_image.png")
 			if card.id ==5:
 				cards[i].icon = preload("res://UI/cards_images/punch_image.png")
+			if card.id==7:
+				cards[i].icon = preload("res://UI/cards_images/grenade_image.png")
 		else:
 			cards[i].visible = false
 			discard_label()

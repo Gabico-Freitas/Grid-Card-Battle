@@ -14,3 +14,4 @@ func _on_player_moved(curr_moves: int, max_moves: int) -> void:
 			icon.modulate.a = 1.0
 		else:
 			icon.modulate.a = 0.4
+	
