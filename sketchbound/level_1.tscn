@@ -30,6 +30,7 @@ sources/0 = SubResource("TileSetAtlasSource_dw4jg")
 
 [node name="Level1" type="Node2D" unique_id=387018158]
 script = ExtResource("1_6t8i5")
+manual_popup = true
 curva = SubResource("Curve_gyffv")
 
 [node name="Background" type="Panel" parent="." unique_id=502224099]

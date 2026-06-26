@@ -5,6 +5,8 @@ var player : Player
 var enemies : Array[Enemy]
 var is_player_turn : bool
 
+@export var manual_popup := false
+
 @onready var ui := $UI
 var tween: Tween
 @export var curva: Curve
@@ -18,7 +20,8 @@ func _ready() -> void:
 			enemies.append(entity)
 	
 	ui.set_text_button("COMEÇAR")
-	await ui.control_screen.hidden
+	if(manual_popup): await ui.control_screen.hidden
+	else: ui.control_screen.hide()
 	player.new_turn_refresh()
 
 func enemies_turn() -> void:
