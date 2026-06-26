@@ -68,10 +68,6 @@ grid = NodePath("..")
 [node name="RangedEnemy" parent="Grid" unique_id=617992537 node_paths=PackedStringArray("grid") instance=ExtResource("8_78pok")]
 grid = NodePath("..")
 
-[node name="RangedEnemy2" parent="Grid" unique_id=2086198540 node_paths=PackedStringArray("grid") instance=ExtResource("8_78pok")]
-initial_pos = Vector2i(7, 2)
-grid = NodePath("..")
-
 [node name="SmasherEnemy" parent="Grid" unique_id=1695074079 node_paths=PackedStringArray("grid") instance=ExtResource("9_lvfll")]
 initial_pos = Vector2i(3, 2)
 grid = NodePath("..")

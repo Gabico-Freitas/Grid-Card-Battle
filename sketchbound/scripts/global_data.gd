@@ -22,11 +22,18 @@ func next_level() -> void:
 	
 	match current_level:
 		2:
+			deck.append(FangsCard.new())
 			get_tree().change_scene_to_file("res://level_2.tscn")
 		3: 
+			deck.append(GrenadeCard.new())
 			get_tree().change_scene_to_file("res://level_3.tscn")
 		_:
+			reset_level_count()
 			get_tree().change_scene_to_file("res://UI/win_screen.tscn")
 
 func reset_level_count() -> void:
 	current_level = 1
+	deck.clear()
+	for card_type in _initial_deck.keys():
+		for i in range(_initial_deck[card_type]):
+			deck.append(card_type.new())
