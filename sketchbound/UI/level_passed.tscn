@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://d1f118ixsnjgf"]
+
+[ext_resource type="Texture2D" uid="uid://4qt42fvhw8ql" path="res://UI/Backgrounds/wallpaper.png" id="1_ut1l7"]
+[ext_resource type="Script" uid="uid://dth4x2llsu6o4" path="res://UI/menu_button.gd" id="2_57ric"]
+[ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_brv1s"]
+[ext_resource type="Script" uid="uid://ctemcm4804di3" path="res://scripts/advanced_button.gd" id="4_ut1l7"]
+[ext_resource type="Texture2D" uid="uid://djkdf2t8fuo7b" path="res://UI/cards_images/arrow_image.png" id="5_57ric"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccer4"]
+texture = ExtResource("1_ut1l7")
+modulate_color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u835"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftari"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 78
+corner_radius_top_right = 78
+corner_radius_bottom_right = 78
+corner_radius_bottom_left = 78
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28vn7"]
+bg_color = Color(0.010877021, 0.47403985, 0.593673, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2vha"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxx3c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vw5t2"]
+texture = ExtResource("5_57ric")
+
+[node name="LevelPassed" type="Control" unique_id=12428595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=393827471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ccer4")
+
+[node name="Label" type="Label" parent="." unique_id=2045949785]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -431.0
+offset_right = 431.0
+offset_bottom = 209.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "PARABÉNS
+PEGUE SUA RECOMPENSA"
+horizontal_alignment = 1
+
+[node name="HFlowContainer" type="HFlowContainer" parent="." unique_id=474655066]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -243.5
+offset_top = -185.0
+offset_right = 243.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 138
+
+[node name="MenuButton" type="Button" parent="HFlowContainer" unique_id=289532042]
+custom_minimum_size = Vector2(172, 76.5)
+layout_mode = 2
+size_flags_horizontal = 0
+layout_direction = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k2vha")
+script = ExtResource("2_57ric")
+
+[node name="ButtonEffects" type="Node" parent="HFlowContainer/MenuButton" unique_id=803107204]
+script = ExtResource("3_brv1s")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="menu" type="RichTextLabel" parent="HFlowContainer/MenuButton" unique_id=35682613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -29.75
+offset_right = 56.0
+offset_bottom = 29.75
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 34
+text = "MENU"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AdvancedButton" type="Button" parent="HFlowContainer" unique_id=1766537706]
+custom_minimum_size = Vector2(177, 0)
+layout_mode = 2
+layout_direction = 2
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u835")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ftari")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28vn7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yxx3c")
+script = ExtResource("4_ut1l7")
+
+[node name="ButtonEffects" type="Node" parent="HFlowContainer/AdvancedButton" unique_id=1679678329]
+script = ExtResource("3_brv1s")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="Avançar" type="RichTextLabel" parent="HFlowContainer/AdvancedButton" unique_id=629984629]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -30.0
+offset_right = 70.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 25
+text = "AVANÇAR"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Carta" type="Panel" parent="." unique_id=1021522492]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -105.0
+offset_right = 80.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vw5t2")
+
+[connection signal="pressed" from="HFlowContainer/MenuButton" to="HFlowContainer/MenuButton" method="_on_pressed"]
+[connection signal="pressed" from="HFlowContainer/AdvancedButton" to="HFlowContainer/AdvancedButton" method="_on_pressed"]
