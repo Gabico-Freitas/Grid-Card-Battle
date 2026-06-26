@@ -25,6 +25,9 @@ func do_move() -> bool:
 	
 	if path.is_empty(): return true
 	var next_cell = path.pop_front()
+	match sign(grid.get_entity_pos(self).x - next_cell.x):
+		1: facing_left = true
+		-1: facing_left = false
 	grid.set_entity_pos(self, next_cell)
 	move_points -= 1
 	
@@ -40,6 +43,8 @@ func _try_attack() -> bool:
 			if entity is Player:
 				entity.take_damage(6)
 				sprite.play("attack")
+				if(i>0): facing_left = false
+				if(i<0): facing_left = true
 				SFXManager.play("smasher_attack", -5)
 				return true
 	return false

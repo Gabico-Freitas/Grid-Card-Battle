@@ -4,15 +4,18 @@ class_name Entity
 
 var my_turn := false
 var hp
+var facing_left := false 
 @export var initial_pos : Vector2i
 @export var grid : Grid
 
 @onready var sprite : AnimatedSprite2D
 
 signal damaged(value:int)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	position = grid.get_entity_world_coordinates(self)
+	sprite.flip_h = facing_left
 
 @abstract
 func new_turn_refresh() -> void

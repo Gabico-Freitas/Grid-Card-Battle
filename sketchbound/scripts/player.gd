@@ -86,6 +86,10 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	if is_instance_valid(ui):
 		ui.update_hand(hand)
 	
+	if(dir==Direction.RIGHT):
+		facing_left = false
+	elif(dir==Direction.LEFT):
+		facing_left = true
 	sprite.play("attack")
 	
 	return true
@@ -111,6 +115,7 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 		elif (event.is_action_pressed("Right")):
 			if grid.move_right(self):
 				move_points -= 1
+				facing_left = false
 				moved.emit(move_points,MAX_MOVE_POINTS)
 		elif (event.is_action_pressed("Down")):
 			if grid.move_down(self):
@@ -119,6 +124,7 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 		elif (event.is_action_pressed("Left")):
 			if grid.move_left(self):
 				move_points -= 1
+				facing_left = true
 				moved.emit(move_points,MAX_MOVE_POINTS)
 	
 	var selected_card_number = -1

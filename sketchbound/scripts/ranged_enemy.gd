@@ -33,29 +33,30 @@ func do_move() -> bool:
 func move() -> bool:
 	# Checks if it can make itself in-range with a move
 	var pos = grid.get_entity_pos(self)
+	var next_cell
 	if(_could_attack(pos + Vector2i(1, 0))): 
-		grid.set_entity_pos(self, pos + Vector2i(1, 0))
+		next_cell = pos + Vector2i(1, 0)
 		move_points -= 1
-		return false
-	if(_could_attack(pos + Vector2i(-1, 0))):
-		grid.set_entity_pos(self, pos + Vector2i(-1, 0))
+	elif(_could_attack(pos + Vector2i(-1, 0))):
+		next_cell = pos + Vector2i(-1, 0)
 		move_points -= 1
-		return false
-	if(_could_attack(pos + Vector2i(0, 1))):
-		grid.set_entity_pos(self, pos + Vector2i(0, 1))
+	elif(_could_attack(pos + Vector2i(0, 1))):
+		next_cell = pos + Vector2i(0, 1)
 		move_points -= 1
-		return false
-	if(_could_attack(pos + Vector2i(0, -1))):
-		grid.set_entity_pos(self, pos + Vector2i(0, -1))
+	elif(_could_attack(pos + Vector2i(0, -1))):
+		next_cell = pos + Vector2i(0, -1)
 		move_points -= 1
-		return false
+	else:
+		# Otherwise, move closer with A*
+		path = grid.path_to_player(self)
+		if path.is_empty(): return true
+		next_cell = path.pop_front()
 	
-	# Otherwise, move closer with A*
-	path = grid.path_to_player(self)
-	if path.is_empty(): return true
-	var next_cell = path.pop_front()
 	grid.set_entity_pos(self, next_cell)
 	move_points -= 1
+	match sign(pos.x - next_cell.x):
+		1: facing_left = true
+		-1: facing_left = false
 	return false
 
 func _try_attack() -> bool:
@@ -68,6 +69,8 @@ func _try_attack() -> bool:
 			if entity is Player:
 				entity.take_damage(5)
 				sprite.play("attack")
+				if(i>0): facing_left = false
+				if(i<0): facing_left = true
 				SFXManager.play("ranged_attack", -6)
 				return true
 	return false
