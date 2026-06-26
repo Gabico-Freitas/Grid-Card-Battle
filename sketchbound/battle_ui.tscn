@@ -13,41 +13,6 @@
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="10_u4y3o"]
 [ext_resource type="PackedScene" uid="uid://caqeprewevjpm" path="res://UI/pop_up.tscn" id="12_u4y3o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b754q"]
-bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 38
-corner_radius_top_right = 38
-corner_radius_bottom_right = 38
-corner_radius_bottom_left = 38
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl173"]
-bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 78
-corner_radius_top_right = 78
-corner_radius_bottom_right = 78
-corner_radius_bottom_left = 78
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldbs2"]
-bg_color = Color(0.010877021, 0.47403985, 0.593673, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 38
-corner_radius_top_right = 38
-corner_radius_bottom_right = 38
-corner_radius_bottom_left = 38
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07xim"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqwdr"]
 bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
 border_width_left = 5
@@ -113,6 +78,41 @@ texture = ExtResource("5_u4y3o")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix8ov"]
 texture = ExtResource("7_b754q")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b754q"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl173"]
+bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 78
+corner_radius_top_right = 78
+corner_radius_bottom_right = 78
+corner_radius_bottom_left = 78
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldbs2"]
+bg_color = Color(0.010877021, 0.47403985, 0.593673, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07xim"]
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1698300715]
 script = ExtResource("1_vkul4")
 
@@ -121,42 +121,6 @@ offset_left = 180.0
 offset_top = -212.0
 offset_right = -107.0
 offset_bottom = -18.0
-
-[node name="HelpButton" type="Button" parent="." unique_id=1253874610 node_paths=PackedStringArray("controls_screen")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -67.0
-offset_top = -330.0
-offset_right = -9.0
-offset_bottom = -272.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_b754q")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pl173")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ldbs2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_07xim")
-script = ExtResource("9_u4y3o")
-controls_screen = NodePath("../ControlsScreen")
-
-[node name="ButtonEffects" type="Node" parent="HelpButton" unique_id=583687185]
-script = ExtResource("10_u4y3o")
-metadata/_custom_type_script = "uid://dinccf3l0huxg"
-
-[node name="Ajuda" type="RichTextLabel" parent="HelpButton" unique_id=1335574839]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 36
-text = "?"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="EndTurnButton" type="Button" parent="." unique_id=828092360]
 anchors_preset = 3
@@ -256,11 +220,47 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ix8ov")
 
+[node name="HelpButton" type="Button" parent="." unique_id=1253874610 node_paths=PackedStringArray("controls_screen")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -330.0
+offset_right = -9.0
+offset_bottom = -272.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_b754q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pl173")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ldbs2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_07xim")
+script = ExtResource("9_u4y3o")
+controls_screen = NodePath("../ControlsScreen")
+
+[node name="ButtonEffects" type="Node" parent="HelpButton" unique_id=583687185]
+script = ExtResource("10_u4y3o")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="Ajuda" type="RichTextLabel" parent="HelpButton" unique_id=1335574839]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ControlsScreen" parent="." unique_id=1953633325 instance=ExtResource("8_pl173")]
 y_sort_enabled = true
 
 [node name="PopUp" parent="." unique_id=2106410455 instance=ExtResource("12_u4y3o")]
 visible = false
 
-[connection signal="pressed" from="HelpButton" to="HelpButton" method="_on_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="HelpButton" to="HelpButton" method="_on_pressed"]
