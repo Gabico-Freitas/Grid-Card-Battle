@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://u4v3dwilp02u"]
 
-[ext_resource type="Texture2D" uid="uid://dyofksobkjab2" path="res://UI/Backgrounds/tutorial.png" id="1_4ynl6"]
 [ext_resource type="Script" uid="uid://c0kxfnoc8nxuo" path="res://scripts/controles_screen.gd" id="1_365wx"]
 [ext_resource type="Script" uid="uid://kt0xo3llbmy4" path="res://UI/return_button.gd" id="2_4ynl6"]
+[ext_resource type="Texture2D" uid="uid://bmfe0806ghqf6" path="res://UI/Backgrounds/tutorial_V2.png" id="2_365wx"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_l1f1s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqq6w"]
-texture = ExtResource("1_4ynl6")
+texture = ExtResource("2_365wx")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnkt3"]
 bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
