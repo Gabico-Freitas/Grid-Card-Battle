@@ -1,0 +1,39 @@
+Notas do playtest 2
+Jogo 1:
+  - Aumentar as teclas no passo 3 do controle
+  - Colocar o dano que o inimigo vai dar e qts mov
+  - Se apertar na carta e passar o turno vai ficar mostrando a area da carta 
+    até escolher outra carta.
+  - Algum bug e ele se mexeu e conituou com o higlight vermelho atrasado, acho q é o msm bug q já anotaram
+  - Mirar confuso, principalmente por conta do bug de permanecer o highlight.
+
+  
+*Ver ordem de movimento dos inimigos (ordem afeta o A*)
+
+Jogo 2:
+  - Saber quantos passos os inimigos dão.
+  - Saber o dano dos inimigos.
+  - Usar o ícone da mana na carta.
+
+Jogo 3: sor
+
+  - O jogo está meio facil pra quem sabe jogar (mas o sor falou q o balancamento está bom)
+  - Fechar o jogo depois de créditos
+  - Colocar nossos nomes
+
+Jogo 4:
+
+  - Ideal seria se o jogador clicar no controles do menu n aparece na primeira fase
+  - Esc não visualmente deseleciona carta
+  - Colocar mouse em cima da carta/selecionar ela dá preview de gasto de mana 
+na ui
+  - End turn automático quando vence
+  - + movimentos do jogador (ahhh sla)
+
+
+Jogo 5:
+  - faltou a resposta sonora
+  - poder desselecionar (n sei escrever essa porra de palavra) clicando fora da carta 
+
+Jogo 6:
+  - Feedback de mana/movimento faltando (reimplementar oq perdemos só)
