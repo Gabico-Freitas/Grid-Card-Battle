@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dth4x2llsu6o4" path="res://UI/menu_button.gd" id="2_57ric"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_brv1s"]
 [ext_resource type="Script" uid="uid://ctemcm4804di3" path="res://scripts/advanced_button.gd" id="4_ut1l7"]
-[ext_resource type="Texture2D" uid="uid://djkdf2t8fuo7b" path="res://UI/cards_images/arrow_image.png" id="5_57ric"]
+[ext_resource type="Script" uid="uid://dkjhyidrxgg35" path="res://scripts/showcase_card.gd" id="6_brv1s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccer4"]
 texture = ExtResource("1_ut1l7")
@@ -46,9 +46,6 @@ corner_radius_bottom_left = 38
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2vha"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxx3c"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vw5t2"]
-texture = ExtResource("5_57ric")
 
 [node name="LevelPassed" type="Control" unique_id=12428595]
 layout_mode = 3
@@ -168,20 +165,21 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Carta" type="Panel" parent="." unique_id=1021522492]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=326093848]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -105.0
-offset_right = 80.0
-offset_bottom = 105.0
+offset_left = -93.0
+offset_top = -110.0
+offset_right = 93.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_vw5t2")
+expand_mode = 2
+script = ExtResource("6_brv1s")
 
 [connection signal="pressed" from="HFlowContainer/MenuButton" to="HFlowContainer/MenuButton" method="_on_pressed"]
 [connection signal="pressed" from="HFlowContainer/AdvancedButton" to="HFlowContainer/AdvancedButton" method="_on_pressed"]

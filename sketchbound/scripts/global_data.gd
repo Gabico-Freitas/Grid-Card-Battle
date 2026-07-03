@@ -18,8 +18,13 @@ func _ready() -> void:
 
 func next_level() -> void:
 	current_level += 1
-	print(current_level)
+	if current_level>3:
+		reset_level_count()
+		get_tree().change_scene_to_file("res://UI/win_screen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://UI/level_passed.tscn")
 	
+func start_next_level() -> void:
 	match current_level:
 		2:
 			deck.append(FangsCard.new())
@@ -27,9 +32,7 @@ func next_level() -> void:
 		3: 
 			deck.append(GrenadeCard.new())
 			get_tree().change_scene_to_file("res://level_3.tscn")
-		_:
-			reset_level_count()
-			get_tree().change_scene_to_file("res://UI/win_screen.tscn")
+		
 
 func reset_level_count() -> void:
 	current_level = 1
