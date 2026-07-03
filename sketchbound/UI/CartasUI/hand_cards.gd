@@ -28,6 +28,7 @@ func _on_card_selected(card_ui: Card_Ui): #Falta fazer
 func update_hand(player_hand : Array[Card]):
 	deck_label()
 	player.selected_card = null
+	player._update_highlight_card_aof()
 	for i in range(cards.size()):
 		if i < player_hand.size():
 			var card = player_hand[i]

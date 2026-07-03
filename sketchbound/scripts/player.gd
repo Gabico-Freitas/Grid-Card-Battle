@@ -62,11 +62,11 @@ func _discard_to_draw() -> void:
 func _use_card(c:Card, dir:Direction) -> bool:
 	if(mana < c.mana_cost): 
 		mana_spent.emit(-1, MAX_MANA)
-		SFXManager.play("no_mana")
+		SFXManager.play("no_mana", -4.5)
 		return false
 	if(move_points < c.movement_cost): 
 		moved.emit(-1,MAX_MOVE_POINTS)
-		SFXManager.play("no_move")
+		SFXManager.play("no_move", 2)
 		return false
 	mana -= c.mana_cost
 	move_points -= c.movement_cost
@@ -135,7 +135,7 @@ func _handle_input_no_selected_card(event: InputEvent) -> void:
 	else:
 		if event is InputEventKey and event.is_pressed() and not event.is_echo() and not event.is_action_pressed("UseCard"):
 			moved.emit(-1,MAX_MOVE_POINTS)
-			SFXManager.play("no_move")
+			SFXManager.play("no_move", 2)
 	
 	var selected_card_number = -1
 	if(event.is_action_pressed("SelectCard1")): selected_card_number = 1
