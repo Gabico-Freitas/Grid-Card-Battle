@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bwofyfoi27i7q" path="res://UI/controls_button.gd" id="4_8oj2f"]
 [ext_resource type="Script" uid="uid://ymr6o6xu1a34" path="res://scripts/credit_button.gd" id="6_ab7dp"]
 [ext_resource type="PackedScene" uid="uid://u4v3dwilp02u" path="res://UI/controles_screen.tscn" id="6_tb7lo"]
+[ext_resource type="PackedScene" uid="uid://bj6y70hk6qe2s" path="res://credits_screen.tscn" id="8_ab7dp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iefc8"]
 texture = ExtResource("1_2ygxs")
@@ -182,7 +183,7 @@ text = "FECHAR JOGO"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=414038649]
+[node name="CreditButton" type="Button" parent="VBoxContainer" unique_id=414038649 node_paths=PackedStringArray("credit_Screen")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
@@ -191,6 +192,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iefc8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tuusc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iefc8")
 script = ExtResource("6_ab7dp")
+credit_Screen = NodePath("../../credits_screen")
 
 [node name="ButtonEffects" type="Node" parent="VBoxContainer/CreditButton" unique_id=1189239209]
 script = ExtResource("2_iefc8")
@@ -240,6 +242,10 @@ offset_left = 87.0
 offset_top = 25.0
 offset_right = -87.0
 offset_bottom = -25.0
+
+[node name="credits_screen" parent="." unique_id=1200091085 instance=ExtResource("8_ab7dp")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/ControlsButton" to="VBoxContainer/ControlsButton" method="_on_pressed"]

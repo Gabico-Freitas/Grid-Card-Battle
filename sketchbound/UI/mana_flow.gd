@@ -5,11 +5,32 @@ func _ready() -> void:
 	for i in range(player.MAX_MANA-1):
 		var icon = $ManaIcon.duplicate()
 		add_child(icon)
+	
+	for child in get_children():
+		child.pivot_offset = child.size / 2.0
 
 func _on_player_mana_spent(curr_mana: int, max_mana: int) -> void:
-	for i in range(get_child_count()):
-		var icon = get_child(i)
-		if i < curr_mana:
-			icon.modulate.a = 1.0
-		else:
-			icon.modulate.a = 0.4
+	if curr_mana < 0:
+		shake()
+	else:
+		for i in range(get_child_count()):
+			var icon = get_child(i)
+			if i < curr_mana:
+				icon.modulate.a = 1.0
+			else:
+				icon.modulate.a = 0.4
+
+func shake() -> void:
+	for child in get_children():
+		if child.has_meta("shake_tween"):
+			var old_tween: Tween = child.get_meta("shake_tween")
+			if is_instance_valid(old_tween):
+				old_tween.kill()
+
+		var child_tween := create_tween()
+		child.set_meta("shake_tween", child_tween)
+
+		child_tween.tween_property(child, "rotation_degrees", 12.0, 0.04)
+		child_tween.tween_property(child, "rotation_degrees", -12.0, 0.08)
+		child_tween.tween_property(child, "rotation_degrees", 8.0, 0.04)
+		child_tween.tween_property(child, "rotation_degrees", 0.0, 0.04)

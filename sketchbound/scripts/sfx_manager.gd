@@ -5,7 +5,9 @@ const SOUNDS = {
 	"melee_attack": preload("res://assets/efeitos_sonoros/soco_lutador_1.wav"),
 	"ranged_attack": preload("res://assets/efeitos_sonoros/tiro_sniper.wav"),
 	"smasher_attack": preload("res://assets/efeitos_sonoros/britadeira_construtor_1.wav"),
-	"thief_attack": preload("res://assets/efeitos_sonoros/moeda_ladrao_1.mp3")
+	"thief_attack": preload("res://assets/efeitos_sonoros/moeda_ladrao_1.mp3"),
+	"no_mana":preload("res://assets/efeitos_sonoros/sem_mana.mp3"),
+	"no_move":preload("res://assets/efeitos_sonoros/no_mov_3.wav")
 }
 var audio_players := []
 
