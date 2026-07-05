@@ -238,10 +238,8 @@ vertical_alignment = 1
 [node name="controles_screen" parent="." unique_id=1953633325 instance=ExtResource("6_tb7lo")]
 visible = false
 layout_mode = 1
-offset_left = 87.0
-offset_top = 25.0
-offset_right = -87.0
-offset_bottom = -25.0
+offset_left = -1.0
+offset_right = 1.0
 
 [node name="credits_screen" parent="." unique_id=1200091085 instance=ExtResource("8_ab7dp")]
 visible = false

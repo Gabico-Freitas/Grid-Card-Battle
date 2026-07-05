@@ -1,11 +1,40 @@
 [gd_scene format=3 uid="uid://bj6y70hk6qe2s"]
 
-[ext_resource type="Texture2D" uid="uid://4qt42fvhw8ql" path="res://UI/Backgrounds/wallpaper.png" id="1_r12fk"]
+[ext_resource type="Texture2D" uid="uid://bteu4o2684fu8" path="res://assets/jogador/Magico_Idle_2.png" id="2_7h8bn"]
+[ext_resource type="Texture2D" uid="uid://bogpnwfr0ibwq" path="res://UI/Backgrounds/BG.png" id="2_p8ydj"]
 [ext_resource type="Script" uid="uid://kt0xo3llbmy4" path="res://UI/return_button.gd" id="2_qvca1"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="3_p8ydj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r12fk"]
-texture = ExtResource("1_r12fk")
+texture = ExtResource("2_p8ydj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7h8bn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrcgn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cq5ip"]
+texture_margin_right = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqvyo"]
+texture = ExtResource("2_7h8bn")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vy8yr"]
+load_path = "res://.godot/imported/Construtor_Dmg_2.png-80adc75ec970a3f4df6eb738b0bbacba.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2d4t"]
+texture = SubResource("CompressedTexture2D_vy8yr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n48si"]
+load_path = "res://.godot/imported/hammer_image.png-8aa07a01ff912aaf4905f872491c9a44.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oy4jq"]
+texture = SubResource("CompressedTexture2D_n48si")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbj3t"]
+load_path = "res://.godot/imported/icone_igor.png-d66cd3fdda1f67b8d612ee987b896af1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgnsr"]
+texture = SubResource("CompressedTexture2D_jbj3t")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvca1"]
 bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
@@ -50,26 +79,215 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Fundo" type="Panel" parent="." unique_id=1087624560]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Panel" type="Panel" parent="." unique_id=1020284059]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = 36.0
-offset_right = -88.0
-offset_bottom = -36.0
+offset_left = 79.0
+offset_top = 23.0
+offset_right = -79.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_r12fk")
+
+[node name="TabContainer" type="TabContainer" parent="Panel" unique_id=54946930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 32.0
+offset_right = -9.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_unselected_color = Color(0.3779188, 0.37791887, 0.37791884, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7h8bn")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_xrcgn")
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_cq5ip")
+current_tab = 0
+
+[node name="Desenvolvimento e Arte" type="VBoxContainer" parent="Panel/TabContainer" unique_id=836177675]
+layout_mode = 2
+theme_override_constants/separation = 9
+metadata/_tab_index = 0
+
+[node name="Devs" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=1281633198]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Desenvolvedores"
+fit_content = true
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=281510581]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Gabriel Freitas da Silva"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=1080207177]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Otávio Barzoto Zomer"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=770544995]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Pedro Giovenardi Younes"
+fit_content = true
+scroll_active = false
+
+[node name="Artista" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=1758380620]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Arte"
+fit_content = true
+vertical_alignment = 1
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=32242860]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Igor Tenedini: @igor.tenedini (Instagram) e igor tenedini (https://www.behance.net/igortenedini)"
+fit_content = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Desenvolvimento e Arte" unique_id=815669123]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/TabContainer/Desenvolvimento e Arte/HBoxContainer" unique_id=2080793238]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jqvyo")
+
+[node name="Panel2" type="Panel" parent="Panel/TabContainer/Desenvolvimento e Arte/HBoxContainer" unique_id=99474464]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u2d4t")
+
+[node name="Panel3" type="Panel" parent="Panel/TabContainer/Desenvolvimento e Arte/HBoxContainer" unique_id=310064344]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_oy4jq")
+
+[node name="Panel4" type="Panel" parent="Panel/TabContainer/Desenvolvimento e Arte/HBoxContainer" unique_id=962561086]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kgnsr")
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Desenvolvimento e Arte/HBoxContainer/Panel4" unique_id=1971876048]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ícone no Behance"
+
+[node name="Efeitos Sonoros e Fonte" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1975294044]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 17
+metadata/_tab_index = 1
+
+[node name="Sons" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=740528751]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Sons"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=422030441]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Sniper: Shot,scifi,powerdown,buildShort,highs.wav by CJDeets -- https://freesound.org/s/476741/ -- License: Attribution 4.0
+"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=222253048]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Lutador: Cartoon Punch Cassette E by modusmogulus -- https://freesound.org/s/785935/ -- License: Creative Commons 0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=989058165]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Construtor: jackhammer.wav by Tomlija -- https://freesound.org/s/98859/ -- License: Attribution 3.0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=1947048808]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Ladrão: handful-of-coins-006 by ilyaShevelev -- https://freesound.org/s/847349/ -- License: Creative Commons 0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=323604596]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Sem mana: Invalid by VincentM400 -- https://freesound.org/s/249618/ -- License: Attribution 4.0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=222016900]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Sem movimento: 
+"
+fit_content = true
+scroll_active = false
+
+[node name="Fonte" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=381696279]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Fonte"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=1099085412]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "SweetHeart: https://www.1001fonts.com/sweetheart-font.html#license"
+fit_content = true
+scroll_active = false
 
 [node name="ReturnButton" type="Button" parent="Panel" unique_id=459301537 node_paths=PackedStringArray("control_Screen")]
 custom_minimum_size = Vector2(138, 76.5)
@@ -79,10 +297,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -87.5
-offset_right = -12.0
-offset_bottom = -11.0
+offset_left = -149.0
+offset_top = -85.5
+offset_right = -11.0
+offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
