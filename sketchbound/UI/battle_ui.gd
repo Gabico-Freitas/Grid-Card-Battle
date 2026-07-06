@@ -34,4 +34,6 @@ func set_text_button(text: String) -> void:
 	control_screen.set_text_button(text)
 
 func _on_end_turn_button_pressed() -> void:
-	player.emit_signal("turn_ended")
+	if player.my_turn:
+		player.my_turn = false
+		player.emit_signal("turn_ended")
