@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dxqvdopqy1nhl" path="res://melee_enemy.tscn" id="7_5hnhx"]
 [ext_resource type="PackedScene" uid="uid://n0y7n1bb56ge" path="res://ranged_enemy.tscn" id="8_78pok"]
 [ext_resource type="PackedScene" uid="uid://bk17pkxhh8gr" path="res://smasher_enemy.tscn" id="9_lvfll"]
-[ext_resource type="AudioStream" uid="uid://bwq6c3s8qiryj" path="res://assets/efeitos_sonoros/MusicaGCG.mp3" id="10_15wb7"]
+[ext_resource type="AudioStream" uid="uid://bcaybhwo0s2id" path="res://assets/efeitos_sonoros/MusicaGCG.mp3" id="10_15wb7"]
 
 [sub_resource type="Curve" id="Curve_gyffv"]
 _limits = [0.0, 1.0, -1.0, 1.0]

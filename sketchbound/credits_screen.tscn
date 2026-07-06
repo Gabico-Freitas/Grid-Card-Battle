@@ -161,7 +161,7 @@ scroll_active = false
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
-text = "Otávio Barzoto Zomer"
+text = "Otávio Barzotto Zomer"
 fit_content = true
 scroll_active = false
 
@@ -249,7 +249,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
-text = "Música principal: Pedro Giovenardi e Otávio Zomer
+text = "Música principal:  Otávio Barzotto Zomer
 "
 fit_content = true
 scroll_active = false

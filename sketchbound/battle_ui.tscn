@@ -273,6 +273,7 @@ offset_right = -1087.0
 offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_b754q")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pl173")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ldbs2")
