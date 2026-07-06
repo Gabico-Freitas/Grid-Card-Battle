@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://j2cvj4yhmk0h" path="res://scripts/help_button.gd" id="9_u4y3o"]
 [ext_resource type="Script" uid="uid://dinccf3l0huxg" path="res://UI/button_animations.gd" id="10_u4y3o"]
 [ext_resource type="PackedScene" uid="uid://caqeprewevjpm" path="res://UI/pop_up.tscn" id="12_u4y3o"]
+[ext_resource type="Script" uid="uid://betjenmnpuua4" path="res://scripts/volume_button.gd" id="13_b754q"]
+[ext_resource type="Script" uid="uid://73eolv1nfot8" path="res://scripts/volume.gd" id="13_dkxd7"]
+[ext_resource type="Texture2D" uid="uid://bnlkdgr13riq0" path="res://UI/Icons/music_symbol.png" id="14_pl173"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqwdr"]
 bg_color = Color(0.027952222, 0.65600425, 0.8137971, 1)
@@ -112,6 +115,8 @@ corner_radius_bottom_right = 38
 corner_radius_bottom_left = 38
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07xim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypydl"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1698300715]
 script = ExtResource("1_vkul4")
@@ -256,6 +261,77 @@ text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VolumeButton" type="Button" parent="." unique_id=1581723028]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1145.0
+offset_top = -64.0
+offset_right = -1087.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_b754q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pl173")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ldbs2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_07xim")
+script = ExtResource("13_b754q")
+
+[node name="ButtonEffects" type="Node" parent="VolumeButton" unique_id=1396372233]
+script = ExtResource("10_u4y3o")
+metadata/_custom_type_script = "uid://dinccf3l0huxg"
+
+[node name="Panel" type="Panel" parent="VolumeButton" unique_id=711608188]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 15.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ypydl")
+
+[node name="TextureRect" type="TextureRect" parent="VolumeButton/Panel" unique_id=840275492]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_pl173")
+expand_mode = 1
+
+[node name="Volume" type="VSlider" parent="VolumeButton" unique_id=1801424682 node_paths=PackedStringArray("music_icon")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -203.0
+offset_right = 38.0
+offset_bottom = -57.0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("13_dkxd7")
+music_icon = NodePath("../Panel/TextureRect")
+
 [node name="ControlsScreen" parent="." unique_id=1953633325 instance=ExtResource("8_pl173")]
 y_sort_enabled = true
 
@@ -264,3 +340,5 @@ visible = false
 
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="HelpButton" to="HelpButton" method="_on_pressed"]
+[connection signal="pressed" from="VolumeButton" to="VolumeButton" method="_on_pressed"]
+[connection signal="value_changed" from="VolumeButton/Volume" to="VolumeButton/Volume" method="_on_value_changed"]

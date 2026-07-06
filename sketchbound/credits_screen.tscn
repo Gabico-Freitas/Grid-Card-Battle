@@ -10,10 +10,23 @@ texture = ExtResource("2_p8ydj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7h8bn"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvca1"]
+expand_margin_top = 24.0
+expand_margin_bottom = 530.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrcgn"]
+texture_margin_right = 12.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvca1"]
+load_path = "res://.godot/imported/selected_tab.png-5c036e67c18a94638658a310dce5953f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7h8bn"]
+texture = SubResource("CompressedTexture2D_qvca1")
+expand_margin_left = 12.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cq5ip"]
 texture_margin_right = 12.0
+expand_margin_left = 24.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqvyo"]
 texture = ExtResource("2_7h8bn")
@@ -79,6 +92,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Fundo" type="Panel" parent="." unique_id=1005165616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Panel" type="Panel" parent="." unique_id=1020284059]
 layout_mode = 1
 anchors_preset = 15
@@ -104,10 +125,13 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hovered_color = Color(0, 0, 0, 1)
 theme_override_colors/font_unselected_color = Color(0.3779188, 0.37791887, 0.37791884, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7h8bn")
+theme_override_styles/tabbar_background = SubResource("StyleBoxTexture_qvca1")
 theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_xrcgn")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_7h8bn")
 theme_override_styles/tab_selected = SubResource("StyleBoxTexture_cq5ip")
 current_tab = 0
 
@@ -208,15 +232,34 @@ text = "ícone no Behance"
 [node name="Efeitos Sonoros e Fonte" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1975294044]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 17
+theme_override_constants/separation = 9
 metadata/_tab_index = 1
+
+[node name="Trilha" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=845353752]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Trilha Sonora"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=302337126]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Música principal: Pedro Giovenardi e Otávio Zomer
+"
+fit_content = true
+scroll_active = false
 
 [node name="Sons" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=740528751]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 52
-text = "Sons"
+text = "Efeitos Sonoros"
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
@@ -266,7 +309,7 @@ scroll_active = false
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
-text = "Sem movimento: 
+text = "Sem movimento: Beep Touch.wav by IndigoRay -- https://freesound.org/s/339133/ -- License: Creative Commons 0
 "
 fit_content = true
 scroll_active = false

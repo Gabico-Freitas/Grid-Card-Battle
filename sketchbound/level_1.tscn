@@ -73,6 +73,7 @@ grid = NodePath("..")
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1067661989]
 stream = ExtResource("9_5rr72")
 autoplay = true
+bus = &"musica"
 
 [connection signal="damaged" from="Grid/Player" to="UI" method="_on_player_damaged"]
 [connection signal="mana_spent" from="Grid/Player" to="UI" method="_on_player_mana_spent"]
