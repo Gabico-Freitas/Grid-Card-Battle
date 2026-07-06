@@ -97,6 +97,7 @@ func _use_card(c:Card, dir:Direction) -> bool:
 	elif(dir==Direction.LEFT):
 		facing_left = true
 	sprite.play("attack")
+	c.play_sfx()
 	
 	return true
 

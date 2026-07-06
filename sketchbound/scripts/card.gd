@@ -6,6 +6,8 @@ var movement_cost := 0
 var damage : int
 var id : int
 var player_damage : int
+var sound_key : String
+var sound_db : float = 0
 
 # List of cells in the card effect's range
 # (0,0) is the player's position
@@ -39,3 +41,6 @@ func get_aof_left() -> Array[Vector2i]:
 		result.append(Vector2i(i.y, -i.x))
 	
 	return result
+
+func play_sfx() -> void:
+	SFXManager.play(sound_key, sound_db)

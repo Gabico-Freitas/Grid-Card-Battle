@@ -8,3 +8,4 @@ func _init() -> void:
 	damage = 7
 	area_of_effect = []
 	area_of_effect.append(Vector2i(0,-1))
+	sound_key = "hammer"

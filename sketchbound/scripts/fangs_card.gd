@@ -11,3 +11,4 @@ func _init() -> void:
 	area_of_effect.append(Vector2i(1,-2))
 	area_of_effect.append(Vector2i(-1,-1))
 	area_of_effect.append(Vector2i(-1,-2))
+	sound_key = "fang"

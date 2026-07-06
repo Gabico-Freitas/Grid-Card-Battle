@@ -229,13 +229,13 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "ícone no Behance"
 
-[node name="Efeitos Sonoros e Fonte" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1975294044]
+[node name="Efeitos Sonoros e Fonte (1)" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1975294044]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 9
 metadata/_tab_index = 1
 
-[node name="Trilha" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=845353752]
+[node name="Trilha" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=845353752]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -245,7 +245,7 @@ fit_content = true
 scroll_active = false
 vertical_alignment = 1
 
-[node name="RichTextLabel8" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=302337126]
+[node name="RichTextLabel8" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=302337126]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -254,7 +254,7 @@ text = "Música principal:  Otávio Barzotto Zomer
 fit_content = true
 scroll_active = false
 
-[node name="Sons" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=740528751]
+[node name="Sons" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=740528751]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -264,7 +264,7 @@ fit_content = true
 scroll_active = false
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=422030441]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=422030441]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -273,7 +273,7 @@ text = "Sniper: Shot,scifi,powerdown,buildShort,highs.wav by CJDeets -- https://
 fit_content = true
 scroll_active = false
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=222253048]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=222253048]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -281,7 +281,7 @@ text = "Lutador: Cartoon Punch Cassette E by modusmogulus -- https://freesound.o
 fit_content = true
 scroll_active = false
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=989058165]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=989058165]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -289,7 +289,7 @@ text = "Construtor: jackhammer.wav by Tomlija -- https://freesound.org/s/98859/ 
 fit_content = true
 scroll_active = false
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=1947048808]
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=1947048808]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -297,7 +297,7 @@ text = "Ladrão: handful-of-coins-006 by ilyaShevelev -- https://freesound.org/s
 fit_content = true
 scroll_active = false
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=323604596]
+[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=323604596]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -305,7 +305,7 @@ text = "Sem mana: Invalid by VincentM400 -- https://freesound.org/s/249618/ -- L
 fit_content = true
 scroll_active = false
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=222016900]
+[node name="RichTextLabel6" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=222016900]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -314,7 +314,7 @@ text = "Sem movimento: Beep Touch.wav by IndigoRay -- https://freesound.org/s/33
 fit_content = true
 scroll_active = false
 
-[node name="Fonte" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=381696279]
+[node name="Fonte" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=381696279]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -324,7 +324,7 @@ fit_content = true
 scroll_active = false
 vertical_alignment = 1
 
-[node name="RichTextLabel7" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte" unique_id=1099085412]
+[node name="RichTextLabel7" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros e Fonte (1)" unique_id=1099085412]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 21
@@ -332,8 +332,84 @@ text = "SweetHeart: https://www.1001fonts.com/sweetheart-font.html#license"
 fit_content = true
 scroll_active = false
 
+[node name="Efeitos Sonoros (2)" type="VBoxContainer" parent="Panel/TabContainer" unique_id=1450190030]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 9
+metadata/_tab_index = 2
+
+[node name="Sons" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=458408231]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+text = "Efeitos Sonoros"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=2089554212]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Soco: FGHTImpt_Punch Sounds Strong_Guilherme, Gabriel, Leonardo_DSBA by posdesigndesom -- https://freesound.org/s/847838/ -- License: Attribution 4.0
+"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=1074923590]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Martelada: cleaver.mp3 by Kneeling -- https://freesound.org/s/448009/ -- License: Creative Commons 0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=729019706]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Corte: Sword Slash Attack by qubodup -- https://freesound.org/s/184422/ -- License: Attribution 4.0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=319821260]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Lança: Cut Through Armor / Slice / Clang by SypherZent -- https://freesound.org/s/420675/ -- License: Attribution 4.0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=1802154248]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Flecha: 02658 single arrows.wav by Robinhood76 -- https://freesound.org/s/126464/ -- License: Attribution NonCommercial 4.0"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=767512863]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Presas: HIS_hissing_cat_snake.wav by CrownieYT -- https://freesound.org/s/447636/ -- License: Creative Commons 0
+"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Panel/TabContainer/Efeitos Sonoros (2)" unique_id=603733140]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Granada: Explosion_001.mp3 by cydon -- https://freesound.org/s/268557/ -- License: Attribution NonCommercial 4.0
+"
+fit_content = true
+scroll_active = false
+
 [node name="ReturnButton" type="Button" parent="Panel" unique_id=459301537 node_paths=PackedStringArray("control_Screen")]
 custom_minimum_size = Vector2(138, 76.5)
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -347,7 +423,6 @@ offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
-layout_direction = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_qvca1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p8ydj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7h8bn")

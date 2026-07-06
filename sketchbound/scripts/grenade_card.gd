@@ -11,3 +11,5 @@ func _init() -> void:
 	area_of_effect.append(Vector2i(0,-2))
 	area_of_effect.append(Vector2i(1,-3))
 	area_of_effect.append(Vector2i(-1,-3))
+	sound_key = "granade"
+	sound_db = -7

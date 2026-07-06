@@ -9,3 +9,5 @@ func _init() -> void:
 	area_of_effect.append(Vector2i(0,-1))
 	area_of_effect.append(Vector2i(0,-2))
 	area_of_effect.append(Vector2i(0,-3))
+	sound_key = "spear"
+	sound_db = -3.5

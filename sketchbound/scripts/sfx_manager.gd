@@ -7,7 +7,14 @@ const SOUNDS = {
 	"smasher_attack": preload("res://assets/efeitos_sonoros/britadeira_construtor_1.wav"),
 	"thief_attack": preload("res://assets/efeitos_sonoros/moeda_ladrao_1.mp3"),
 	"no_mana":preload("res://assets/efeitos_sonoros/sem_mana.mp3"),
-	"no_move":preload("res://assets/efeitos_sonoros/no_mov_3.wav")
+	"no_move":preload("res://assets/efeitos_sonoros/no_mov_3.wav"),
+	"punch": preload("res://assets/efeitos_sonoros/punch.mp3"),
+	"hammer": preload("res://assets/efeitos_sonoros/hammer.mp3"),
+	"slash": preload("res://assets/efeitos_sonoros/slash.mp3"),
+	"spear": preload("res://assets/efeitos_sonoros/spear.wav"),
+	"arrow": preload("res://assets/efeitos_sonoros/arrow.mp3"),
+	"fang": preload("res://assets/efeitos_sonoros/fang.wav"),
+	"granade": preload("res://assets/efeitos_sonoros/granade.mp3")
 }
 var audio_players := []
 
